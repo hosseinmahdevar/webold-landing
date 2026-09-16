@@ -1,0 +1,24 @@
+name: webold-landing
+
+# نسخه‌ی production برای روی سرور — image از GHCR کشیده می‌شود.
+# متغیر APP_IMAGE باید ست شود (workflow زمان دیپلوی آن را در .app.env می‌نویسد).
+
+services:
+  webold:
+    image: ${APP_IMAGE}
+    container_name: webold-landing
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - fetch('http://localhost:3000').then(r => { if (!r.ok) process.exit(1) }).catch(() => process.exit(1))
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

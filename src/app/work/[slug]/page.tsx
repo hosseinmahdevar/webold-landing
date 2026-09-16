@@ -1,0 +1,152 @@
+import * as React from "react";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import { projects } from "@/data/projects";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, CheckCircle2, Clock, Layers, TrendingUp } from "lucide-react";
+
+interface Props {
+  params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
+  if (!project) return { title: "پروژه یافت نشد" };
+
+  return {
+    title: `${project.title} | کیس‌استادی`,
+    description: project.description,
+  };
+}
+
+export default async function ProjectDetailPage({ params }: Props) {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
+
+  if (!project) {
+    notFound();
+  }
+
+  return (
+    <article className="py-20 md:py-28">
+      <div className="mx-auto max-w-[960px] px-5">
+        {/* Breadcrumb */}
+        <div className="mb-8">
+          <Link
+            href="/work"
+            className="text-xs font-mono text-neutral-400 hover:text-white inline-flex items-center gap-1.5 transition-colors"
+          >
+            <ArrowLeft className="h-3.5 w-3.5 rotate-180" />
+            <span>بازگشت به همه پروژه‌ها</span>
+          </Link>
+        </div>
+
+        {/* Title and Tag */}
+        <div className="space-y-4 mb-10">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs font-mono text-neutral-300 border border-white/10">
+            <span>{project.categoryLabel}</span>
+            <span>•</span>
+            <span>{project.client}</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">
+            {project.title}
+          </h1>
+          <p className="text-lg text-neutral-400 leading-relaxed max-w-2xl">
+            {project.headline}
+          </p>
+        </div>
+
+        {/* KPI Strip */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 p-6 rounded-xl border border-white/10 bg-[#0A0A0A] mb-12 font-mono">
+          <div>
+            <div className="text-xs text-neutral-500 mb-1 flex items-center gap-1.5">
+              <TrendingUp className="h-3.5 w-3.5 text-emerald-400" />
+              <span>دستاورد اصلی</span>
+            </div>
+            <div className="text-lg sm:text-xl font-bold text-emerald-400">{project.metric}</div>
+          </div>
+          <div>
+            <div className="text-xs text-neutral-500 mb-1 flex items-center gap-1.5">
+              <Clock className="h-3.5 w-3.5 text-neutral-400" />
+              <span>مدت زمان اجرا</span>
+            </div>
+            <div className="text-base sm:text-lg font-bold text-white">{project.timeline || "۸ هفته"}</div>
+          </div>
+          <div className="col-span-2 sm:col-span-1">
+            <div className="text-xs text-neutral-500 mb-1 flex items-center gap-1.5">
+              <Layers className="h-3.5 w-3.5 text-neutral-400" />
+              <span>استک محوری</span>
+            </div>
+            <div className="text-sm font-bold text-white">{project.techStack.slice(0, 2).join(" / ")}</div>
+          </div>
+        </div>
+
+        {/* Featured Image */}
+        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl border border-white/10 mb-14 bg-neutral-900">
+          <img
+            src={project.image}
+            alt={project.title}
+            className="h-full w-full object-cover object-center grayscale contrast-125"
+          />
+        </div>
+
+        {/* Story Body */}
+        <div className="space-y-12 border-b border-white/5 pb-16">
+          {/* Challenge */}
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-white tracking-tight">چالش کارفرما</h2>
+            <p className="text-base text-neutral-300 leading-relaxed">
+              {project.challenge || project.description}
+            </p>
+          </section>
+
+          {/* Solution */}
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-white tracking-tight">معماری و راه‌حل مهندسی</h2>
+            <p className="text-base text-neutral-300 leading-relaxed">
+              {project.solution || "طراحی و توسعه اختصاصی بر پایه Next.js با تمرکز بر حداقل حجم باندل و سرعت لود فوق‌سریع."}
+            </p>
+          </section>
+
+          {/* Deliverables */}
+          <section className="space-y-4">
+            <h2 className="text-xl font-bold text-white tracking-tight">خروجی‌ها و تحویل‌دادنی‌ها</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {project.deliverables.map((item) => (
+                <div key={item} className="flex items-center gap-2.5 text-sm text-neutral-300 bg-white/5 p-3 rounded-lg border border-white/5">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Results */}
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-white tracking-tight">نتیجه و تأثیر تجاری</h2>
+            <p className="text-base text-neutral-300 leading-relaxed">
+              {project.impact || "ارتقای مستقیم رضایت کاربران، بهبود رتبه سئو و کاهش چشمگیر زمان لود صفحه."}
+            </p>
+          </section>
+        </div>
+
+        {/* Next Step Call to Action */}
+        <div className="pt-12 text-center space-y-4">
+          <h3 className="text-2xl font-bold text-white">آیا پروژه‌ای مشابه در ذهن دارید؟</h3>
+          <p className="text-sm text-neutral-400 max-w-md mx-auto">
+            بیایید در مورد نیازمندی‌ها و بودجه پروژه شما به صورت شفاف گفتگو کنیم.
+          </p>
+          <div className="pt-2">
+            <Link href="/#intake">
+              <Button size="lg" variant="primary">
+                <span>شروع استعلام و مشاوره اختصاصی</span>
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}

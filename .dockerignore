@@ -1,0 +1,23 @@
+node_modules
+.next
+out
+.git
+.gitignore
+*.md
+
+# ابزارهای محلی و خروجی‌های bmad — لازم نیست داخل ایمیج بروند
+.bm*/
+_bmad
+_bmad-output
+.claude
+.cline
+.cline*
+
+.env
+.env.*
+!.env.example
+
+Dockerfile*
+.dockerignore
+docker-compose*.yml
+azure-pipelines.yml
