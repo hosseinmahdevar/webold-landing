@@ -12,6 +12,19 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
+    networks:
+      - traefik_network # همان شبکه‌ای که ترافیک روی آن ران شده
+    labels:
+      - "traefik.enable=true"
+      # دامنه سایت را اینجا قرار دهید:
+      - "traefik.http.routers.webold.rule=Host(`webold.ir`)"
+      - "traefik.http.routers.webold.entrypoints=websecure"
+      # در صورت استفاده از Let's Encrypt / CertResolver در ترافیک (نام resolver خود را جایگزین کنید):
+      - "traefik.http.routers.webold.tls=true"
+      - "traefik.http.routers.webold.tls.certresolver=letsencrypt"
+      # پورتی که اپلیکیشن داخل کانتینر گوش می‌دهد:
+      - "traefik.http.services.webold.loadbalancer.server.port=3000"
+
     healthcheck:
       test:
         - CMD
@@ -22,3 +35,7 @@ services:
       timeout: 5s
       retries: 3
       start_period: 10s
+networks:
+  traefik_network:
+    external: true
+    name: proxy
