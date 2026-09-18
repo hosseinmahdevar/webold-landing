@@ -1,4 +1,4 @@
-# Design System Master File — Slate + Indigo
+# Design System Master File — Electric Pistachio Luxury
 
 > **LOGIC:** When building a specific page, first check `design-system/pages/[page-name].md`.
 > If that file exists, its rules **override** this Master file.
@@ -7,60 +7,57 @@
 ---
 
 **Project:** Webold Studio
-**Generated:** 2026-09-17 21:35:00
-**Category:** High-End Software Engineering & Design Studio
-**Palette Direction:** Option 2 — Slate + Indigo (Trust & Engineering Authority)
+**Generated:** 2026-09-17 21:50:00
+**Category:** Modern Technical Software & Design Studio
+**Palette Direction:** Electric Pistachio & Cyber Lime (مغز پسته‌ای لوکس)
 
 ---
 
 ## Global Rules
 
-### Color Palette
+### 🌙 Dark / Night Mode Palette (Default)
 
 | Role | Hex / Value | CSS Variable | Purpose |
 |------|-------------|--------------|---------|
-| Background | `#0B0D13` | `--background` | Deep Slate Night Ground |
-| Card / Surface | `#131622` | `--card` | Elevated Surface with Indigo tint |
-| Foreground | `#EEF2F6` | `--foreground` | Crisp High-Contrast Text |
-| Primary Surface | `#1E2235` | `--primary` | Sub-cards, elevated panels |
-| Primary FG | `#FFFFFF` | `--primary-foreground` | White text on primary |
-| Secondary | `#252B42` | `--secondary` | Tags, inactive chips |
-| Secondary FG | `#FFFFFF` | `--secondary-foreground` | White text on secondary |
-| Accent / CTA | `#6366F1` | `--accent` | Sharp Trust Indigo Action |
-| Accent Hover | `#4F46E5` | `--accent-hover` | Deepened Indigo Hover |
-| Accent FG | `#FFFFFF` | `--accent-foreground` | Text on Accent Button |
-| Muted | `#111420` | `--muted` | Deep recessed inputs |
-| Muted Foreground | `#8B95A5` | `--muted-foreground` | Secondary helper text |
-| Border | `rgba(99, 102, 241, 0.12)` | `--border` | Subtle Indigo Glass Border |
-| Border Hover | `rgba(99, 102, 241, 0.32)` | `--border-hover` | Interactive Border Glow |
-| Ring | `#6366F1` | `--ring` | Accessibility Focus Ring |
-| Destructive | `#EF4444` | `--destructive` | Error states |
+| Background | `#080B09` | `--background` | Deep Forest Dark Ground with subtle olive tint |
+| Card / Surface | `#0F1612` | `--card` | Elevated Surface with Pistachio aura |
+| Foreground | `#F4FAF5` | `--foreground` | Crisp High-Contrast White Text |
+| Primary Surface | `#17241C` | `--primary` | Sub-cards, elevated panels |
+| Secondary | `#1F3025` | `--secondary` | Tags, inactive chips |
+| Accent / CTA | `#A3E635` | `--accent` | Electric Pistachio Lime (#A3E635 / #BEF264) |
+| Accent FG | `#06180A` | `--accent-foreground` | Deep Dark Text on Accent Button |
+| Muted | `#0D140F` | `--muted` | Deep recessed inputs |
+| Muted Foreground | `#8EA194` | `--muted-foreground` | Secondary helper text |
+| Border | `rgba(163, 230, 53, 0.13)` | `--border` | Subtle Pistachio Glass Border |
+| Border Hover | `rgba(163, 230, 53, 0.35)` | `--border-hover` | Interactive Border Glow |
+| Ring | `#A3E635` | `--ring` | Accessibility Focus Ring |
 
-**Color Psychology:**
-- `#0B0D13` + `#131622`: Deep slate tones give an immediate impression of reliability, engineering discipline, and zero fluff.
-- `#6366F1`: Electric Indigo is the benchmark color used by modern developer tool leaders (Linear, Raycast, Vercel) to signify intelligent software craft and high precision.
+### ☀️ Light / Day Mode Palette
+
+| Role | Hex / Value | CSS Variable | Purpose |
+|------|-------------|--------------|---------|
+| Background | `#F7FAF7` | `--background` | Crisp, fresh light background |
+| Card / Surface | `#FFFFFF` | `--card` | Pure white cards with soft shadow |
+| Foreground | `#0E1F12` | `--foreground` | Deep Forest Slate Text (12:1 Contrast) |
+| Accent / CTA | `#65A30D` | `--accent` | Rich Pistachio Green |
+| Accent FG | `#FFFFFF` | `--accent-foreground` | White Text on Accent |
+| Muted Foreground | `#4D6652` | `--muted-foreground` | Readable muted text |
+| Border | `rgba(101, 163, 13, 0.16)` | `--border` | Subtle light green border |
 
 ---
 
-## Typography
+## 3D WebGL (Three.js) Visual Rules
+
+- **Wave Particle Colors:** Dynamic lerp between `#A3E635` (Pistachio), `#34D399` (Mint), and `#BEF264` (Lime).
+- **Core 3D Wireframe:** Torus Knot with Pistachio Physical Material + Mint Icosahedron Core.
+
+---
+
+## Typography & Elevation
 
 - **Heading Font:** Archivo / Inter
 - **Body Font:** Space Grotesk / Iranian Sans-Serif
 - **Code / Metrics Font:** IBM Plex Mono / JetBrains Mono
-
----
-
-## Spacing & Elevation
-
-| Token | Value |
-|-------|-------|
-| `--space-xs` | `4px` |
-| `--space-sm` | `8px` |
-| `--space-md` | `16px` |
-| `--space-lg` | `24px` |
-| `--space-xl` | `32px` |
-| `--space-2xl` | `48px` |
-| `--space-3xl` | `64px` |
 
 ---
 
@@ -70,5 +67,5 @@
 - ❌ No low-contrast muted text below 4.5:1.
 - ❌ No layout-shifting hover effects.
 - ✅ All interactive buttons have minimum 44px touch targets.
-- ✅ Visible 2px indigo focus rings for keyboard navigation.
+- ✅ Visible 2px focus rings for keyboard navigation.
 - ✅ Full support for `prefers-reduced-motion`.

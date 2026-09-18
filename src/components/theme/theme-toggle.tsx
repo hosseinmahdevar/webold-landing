@@ -14,7 +14,6 @@ export function ThemeToggle() {
       setTheme(savedTheme);
       document.documentElement.classList.toggle("dark", savedTheme === "dark");
     } else {
-      // Default to dark as requested, or check system
       const isDark = document.documentElement.classList.contains("dark");
       setTheme(isDark ? "dark" : "light");
     }
@@ -36,7 +35,7 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="h-9 w-9 rounded-lg border border-indigo-500/20 bg-white/5 opacity-50" />
+      <div className="h-9 w-9 rounded-lg border border-lime-500/20 bg-black/5 dark:bg-white/5 opacity-50" />
     );
   }
 
@@ -44,14 +43,14 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={toggleTheme}
-      className="relative flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 dark:border-indigo-500/20 bg-slate-100 dark:bg-[#131622] text-slate-700 dark:text-indigo-200 hover:text-indigo-600 dark:hover:text-white hover:border-indigo-400/50 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 cursor-pointer shadow-sm"
+      className="relative flex h-9 w-9 items-center justify-center rounded-lg border border-lime-600/20 dark:border-lime-400/20 bg-lime-50/50 dark:bg-[#121B15] text-lime-900 dark:text-lime-300 hover:text-lime-700 dark:hover:text-white hover:border-lime-500/50 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-500 cursor-pointer shadow-xs"
       aria-label={theme === "dark" ? "تغییر به حالت روز (روشن)" : "تغییر به حالت شب (تاریک)"}
       title={theme === "dark" ? "حالت روز" : "حالت شب"}
     >
       {theme === "dark" ? (
-        <Sun className="h-4 w-4 transition-transform duration-300 hover:rotate-45 text-amber-400" />
+        <Sun className="h-4 w-4 transition-transform duration-300 hover:rotate-45 text-[#A3E635]" />
       ) : (
-        <Moon className="h-4 w-4 transition-transform duration-300 hover:-rotate-12 text-indigo-600" />
+        <Moon className="h-4 w-4 transition-transform duration-300 hover:-rotate-12 text-lime-700" />
       )}
     </button>
   );

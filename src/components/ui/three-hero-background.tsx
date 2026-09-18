@@ -43,10 +43,10 @@ export function ThreeHeroBackground() {
     const colors = new Float32Array(numParticles * 3);
     const initialY = new Float32Array(numParticles);
 
-    // Indigo (#6366F1), Cyan (#0EA5E9), Violet (#818CF8)
-    const colorIndigo = new THREE.Color("#6366F1");
-    const colorCyan = new THREE.Color("#0EA5E9");
-    const colorViolet = new THREE.Color("#818CF8");
+    // Pistachio Colors: Lime (#A3E635), Emerald/Mint (#34D399), Bright Lime (#BEF264)
+    const colorPistachio = new THREE.Color("#A3E635");
+    const colorMint = new THREE.Color("#34D399");
+    const colorLimeBright = new THREE.Color("#BEF264");
 
     let i = 0;
     for (let ix = 0; ix < countX; ix++) {
@@ -64,8 +64,8 @@ export function ThreeHeroBackground() {
 
         initialY[i] = y;
 
-        // Gradient from Indigo to Cyan to Violet
-        const mixedColor = colorIndigo.clone().lerp(colorCyan, u).lerp(colorViolet, v * 0.5);
+        // Gradient from Pistachio to Mint to Bright Lime
+        const mixedColor = colorPistachio.clone().lerp(colorMint, u).lerp(colorLimeBright, v * 0.5);
         colors[i * 3] = mixedColor.r;
         colors[i * 3 + 1] = mixedColor.g;
         colors[i * 3 + 2] = mixedColor.b;
@@ -86,8 +86,8 @@ export function ThreeHeroBackground() {
     if (ctx) {
       const gradient = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
       gradient.addColorStop(0, "rgba(255,255,255,1)");
-      gradient.addColorStop(0.3, "rgba(129,140,248,0.9)");
-      gradient.addColorStop(0.7, "rgba(99,102,241,0.4)");
+      gradient.addColorStop(0.3, "rgba(190,242,100,0.9)");
+      gradient.addColorStop(0.7, "rgba(163,230,53,0.4)");
       gradient.addColorStop(1, "rgba(0,0,0,0)");
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, 32, 32);
@@ -112,7 +112,7 @@ export function ThreeHeroBackground() {
     const coreGeometry = new THREE.IcosahedronGeometry(7, 1);
     const coreWireframe = new THREE.WireframeGeometry(coreGeometry);
     const coreLineMaterial = new THREE.LineBasicMaterial({
-      color: 0x6366f1,
+      color: 0xa3e635,
       transparent: true,
       opacity: 0.35,
     });
@@ -123,7 +123,7 @@ export function ThreeHeroBackground() {
     // Inner glowing ring
     const ringGeometry = new THREE.TorusGeometry(8.5, 0.06, 16, 64);
     const ringMaterial = new THREE.MeshBasicMaterial({
-      color: 0x0ea5e9,
+      color: 0x34d399,
       transparent: true,
       opacity: 0.45,
     });

@@ -14,6 +14,8 @@ export const siteConfig: SiteConfig = {
     phoneDisplay: "۰۲۱-۶۶۴۸۰۰۷۶",
     mobile: "09361059451",
     mobileDisplay: "۰۹۳۶۱۰۵۹۴۵۱",
+    mobile2: "09373885292",
+    mobile2Display: "۰۹۳۷۳۸۸۵۲۹۲",
     email: "hello@webold.ir",
   },
   navLinks: [

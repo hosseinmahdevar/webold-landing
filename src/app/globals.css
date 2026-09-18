@@ -1,24 +1,24 @@
 @import "tailwindcss";
 
 @layer base {
-  /* ☀️ Light / Day Theme Tokens */
+  /* ☀️ Light / Day Theme Tokens (Pistachio Day) */
   :root {
-    --background: #F8FAFC;
-    --foreground: #0F172A;
+    --background: #F7FAF7;
+    --foreground: #0E1F12;
     --card: #FFFFFF;
-    --card-foreground: #0F172A;
-    --primary: #EEF2F6;
-    --primary-foreground: #0F172A;
-    --secondary: #F1F5F9;
-    --secondary-foreground: #1E293B;
-    --muted: #E2E8F0;
-    --muted-foreground: #64748B;
-    --accent: #4F46E5;
-    --accent-hover: #4338CA;
+    --card-foreground: #0E1F12;
+    --primary: #EAF3EB;
+    --primary-foreground: #0E1F12;
+    --secondary: #F0F6F1;
+    --secondary-foreground: #1E3823;
+    --muted: #E1ECE3;
+    --muted-foreground: #4D6652;
+    --accent: #65A30D;
+    --accent-hover: #4D7C0F;
     --accent-foreground: #FFFFFF;
-    --border: rgba(99, 102, 241, 0.14);
-    --border-hover: rgba(99, 102, 241, 0.35);
-    --ring: #4F46E5;
+    --border: rgba(101, 163, 13, 0.16);
+    --border-hover: rgba(101, 163, 13, 0.40);
+    --ring: #65A30D;
     --destructive: #DC2626;
 
     /* Spacing Scale */
@@ -31,35 +31,35 @@
     --space-3xl: 64px;
 
     /* Shadows */
-    --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.06);
-    --shadow-glow: 0 0 35px -5px rgba(99, 102, 241, 0.12);
-    --shadow-accent: 0 0 25px rgba(79, 70, 229, 0.25);
+    --shadow-card: 0 4px 20px -2px rgba(14, 31, 18, 0.06);
+    --shadow-glow: 0 0 35px -5px rgba(101, 163, 13, 0.14);
+    --shadow-accent: 0 0 25px rgba(101, 163, 13, 0.25);
   }
 
-  /* 🌙 Dark / Night Theme Tokens */
+  /* 🌙 Dark / Night Theme Tokens (Electric Pistachio Luxury) */
   .dark, :root[data-theme="dark"] {
-    --background: #0B0D13;
-    --foreground: #EEF2F6;
-    --card: #131622;
-    --card-foreground: #EEF2F6;
-    --primary: #1E2235;
+    --background: #080B09;
+    --foreground: #F4FAF5;
+    --card: #0F1612;
+    --card-foreground: #F4FAF5;
+    --primary: #17241C;
     --primary-foreground: #FFFFFF;
-    --secondary: #252B42;
+    --secondary: #1F3025;
     --secondary-foreground: #FFFFFF;
-    --muted: #111420;
-    --muted-foreground: #8B95A5;
-    --accent: #6366F1;
-    --accent-hover: #4F46E5;
-    --accent-foreground: #FFFFFF;
-    --border: rgba(99, 102, 241, 0.12);
-    --border-hover: rgba(99, 102, 241, 0.32);
-    --ring: #6366F1;
+    --muted: #0D140F;
+    --muted-foreground: #8EA194;
+    --accent: #A3E635;
+    --accent-hover: #BEF264;
+    --accent-foreground: #06180A;
+    --border: rgba(163, 230, 53, 0.13);
+    --border-hover: rgba(163, 230, 53, 0.35);
+    --ring: #A3E635;
     --destructive: #EF4444;
 
     /* Shadows */
-    --shadow-card: 0 4px 20px -2px rgba(5, 7, 12, 0.7);
-    --shadow-glow: 0 0 35px -5px rgba(99, 102, 241, 0.18);
-    --shadow-accent: 0 0 25px rgba(99, 102, 241, 0.35);
+    --shadow-card: 0 4px 20px -2px rgba(2, 6, 3, 0.7);
+    --shadow-glow: 0 0 35px -5px rgba(163, 230, 53, 0.18);
+    --shadow-accent: 0 0 25px rgba(163, 230, 53, 0.35);
   }
 
   * {
@@ -85,30 +85,30 @@
 .bg-grid-pattern {
   background-size: 40px 40px;
   background-image:
-    linear-gradient(to right, rgba(99, 102, 241, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(101, 163, 13, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(101, 163, 13, 0.06) 1px, transparent 1px);
 }
 
 .dark .bg-grid-pattern {
   background-image:
-    linear-gradient(to right, rgba(99, 102, 241, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(99, 102, 241, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(163, 230, 53, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(163, 230, 53, 0.04) 1px, transparent 1px);
 }
 
 .ambient-glow {
-  background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.14) 0%, rgba(248, 250, 252, 0) 70%);
+  background: radial-gradient(circle at 50% 0%, rgba(101, 163, 13, 0.15) 0%, rgba(247, 250, 247, 0) 70%);
 }
 
 .dark .ambient-glow {
-  background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.18) 0%, rgba(11, 13, 19, 0) 70%);
+  background: radial-gradient(circle at 50% 0%, rgba(163, 230, 53, 0.18) 0%, rgba(8, 11, 9, 0) 70%);
 }
 
 .ambient-glow-cyan {
-  background: radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.08) 0%, rgba(248, 250, 252, 0) 65%);
+  background: radial-gradient(circle at 50% 0%, rgba(52, 211, 153, 0.10) 0%, rgba(247, 250, 247, 0) 65%);
 }
 
 .dark .ambient-glow-cyan {
-  background: radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.09) 0%, rgba(11, 13, 19, 0) 65%);
+  background: radial-gradient(circle at 50% 0%, rgba(52, 211, 153, 0.12) 0%, rgba(8, 11, 9, 0) 65%);
 }
 
 /* Card Luxury Glow & Border */
@@ -142,8 +142,8 @@
 
 /* Selection */
 ::selection {
-  background: #6366F1;
-  color: #FFFFFF;
+  background: #A3E635;
+  color: #06180A;
 }
 
 /* Reduced Motion */

@@ -15,6 +15,7 @@ export interface Project {
   solution?: string;
   impact?: string;
   timeline?: string;
+  liveUrl?: string;
 }
 
 export interface Service {
@@ -52,6 +53,8 @@ export interface SiteConfig {
     phoneDisplay: string;
     mobile: string;
     mobileDisplay: string;
+    mobile2?: string;
+    mobile2Display?: string;
     email: string;
   };
   navLinks: {

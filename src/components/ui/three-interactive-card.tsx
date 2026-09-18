@@ -34,11 +34,11 @@ export function ThreeInteractiveCard() {
     const group = new THREE.Group();
     scene.add(group);
 
-    // 1. Outer Torus Knot
+    // 1. Outer Torus Knot in Pistachio Glow
     const knotGeometry = new THREE.TorusKnotGeometry(4.2, 0.9, 100, 16, 2, 3);
     const knotMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0x6366f1,
-      emissive: 0x1e1b4b,
+      color: 0xa3e635,
+      emissive: 0x14532d,
       roughness: 0.15,
       metalness: 0.85,
       clearcoat: 1.0,
@@ -50,13 +50,13 @@ export function ThreeInteractiveCard() {
     const knotMesh = new THREE.Mesh(knotGeometry, knotMaterial);
     group.add(knotMesh);
 
-    // 2. Inner Glowing Core
+    // 2. Inner Glowing Core in Mint
     const innerGeometry = new THREE.IcosahedronGeometry(2.4, 2);
     const innerMaterial = new THREE.MeshBasicMaterial({
-      color: 0x0ea5e9,
+      color: 0x34d399,
       wireframe: true,
       transparent: true,
-      opacity: 0.6,
+      opacity: 0.65,
     });
     const innerMesh = new THREE.Mesh(innerGeometry, innerMaterial);
     group.add(innerMesh);
@@ -79,9 +79,9 @@ export function ThreeInteractiveCard() {
 
     const particleMat = new THREE.PointsMaterial({
       size: 0.18,
-      color: 0x38bdf8,
+      color: 0xbef264,
       transparent: true,
-      opacity: 0.8,
+      opacity: 0.85,
       blending: THREE.AdditiveBlending,
     });
     const orbitalParticles = new THREE.Points(particleGeo, particleMat);
@@ -91,11 +91,11 @@ export function ThreeInteractiveCard() {
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
     scene.add(ambientLight);
 
-    const pointLight1 = new THREE.PointLight(0x6366f1, 2.5, 50);
+    const pointLight1 = new THREE.PointLight(0xa3e635, 2.5, 50);
     pointLight1.position.set(10, 10, 10);
     scene.add(pointLight1);
 
-    const pointLight2 = new THREE.PointLight(0x0ea5e9, 2.5, 50);
+    const pointLight2 = new THREE.PointLight(0x34d399, 2.5, 50);
     pointLight2.position.set(-10, -10, 10);
     scene.add(pointLight2);
 
@@ -185,7 +185,7 @@ export function ThreeInteractiveCard() {
   return (
     <div className="relative w-full h-full min-h-[280px] sm:min-h-[320px] flex items-center justify-center cursor-grab active:cursor-grabbing select-none">
       <div ref={mountRef} className="w-full h-full absolute inset-0" />
-      <div className="absolute bottom-3 right-3 text-[10px] font-mono text-indigo-300/60 bg-indigo-950/40 px-2 py-0.5 rounded border border-indigo-500/20 pointer-events-none backdrop-blur-sm">
+      <div className="absolute bottom-3 right-3 text-[10px] font-mono text-lime-800 dark:text-lime-300/80 bg-lime-100/80 dark:bg-lime-950/60 px-2.5 py-1 rounded-md border border-lime-300 dark:border-lime-500/20 pointer-events-none backdrop-blur-sm">
         3D Interactive • برای چرخش بکشید
       </div>
     </div>
