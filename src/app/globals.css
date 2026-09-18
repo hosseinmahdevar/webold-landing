@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   /* ☀️ Light / Day Theme Tokens (Pistachio Day) */
   :root {
@@ -89,7 +91,7 @@
     linear-gradient(to bottom, rgba(101, 163, 13, 0.06) 1px, transparent 1px);
 }
 
-.dark .bg-grid-pattern {
+.dark .bg-grid-pattern, :root[data-theme="dark"] .bg-grid-pattern {
   background-image:
     linear-gradient(to right, rgba(163, 230, 53, 0.04) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(163, 230, 53, 0.04) 1px, transparent 1px);
@@ -99,7 +101,7 @@
   background: radial-gradient(circle at 50% 0%, rgba(101, 163, 13, 0.15) 0%, rgba(247, 250, 247, 0) 70%);
 }
 
-.dark .ambient-glow {
+.dark .ambient-glow, :root[data-theme="dark"] .ambient-glow {
   background: radial-gradient(circle at 50% 0%, rgba(163, 230, 53, 0.18) 0%, rgba(8, 11, 9, 0) 70%);
 }
 
@@ -107,7 +109,7 @@
   background: radial-gradient(circle at 50% 0%, rgba(52, 211, 153, 0.10) 0%, rgba(247, 250, 247, 0) 65%);
 }
 
-.dark .ambient-glow-cyan {
+.dark .ambient-glow-cyan, :root[data-theme="dark"] .ambient-glow-cyan {
   background: radial-gradient(circle at 50% 0%, rgba(52, 211, 153, 0.12) 0%, rgba(8, 11, 9, 0) 65%);
 }
 
