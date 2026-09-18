@@ -1,4 +1,4 @@
-# Design System Master File
+# Design System Master File — Slate + Indigo
 
 > **LOGIC:** When building a specific page, first check `design-system/pages/[page-name].md`.
 > If that file exists, its rules **override** this Master file.
@@ -7,8 +7,9 @@
 ---
 
 **Project:** Webold Studio
-**Generated:** 2026-09-17 21:17:32
-**Category:** Photography Studio
+**Generated:** 2026-09-17 21:35:00
+**Category:** High-End Software Engineering & Design Studio
+**Palette Direction:** Option 2 — Slate + Indigo (Trust & Engineering Authority)
 
 ---
 
@@ -16,199 +17,58 @@
 
 ### Color Palette
 
-| Role | Hex | CSS Variable |
-|------|-----|--------------|
-| Primary | `#18181B` | `--color-primary` |
-| On Primary | `#FFFFFF` | `--color-on-primary` |
-| Secondary | `#27272A` | `--color-secondary` |
-| On Secondary | `#FFFFFF` | `--color-on-secondary` |
-| Accent/CTA | `#F8FAFC` | `--color-accent` |
-| On Accent/CTA | `#0F172A` | `--color-on-accent` |
-| Background | `#000000` | `--color-background` |
-| Foreground | `#FAFAFA` | `--color-foreground` |
-| Card | `#0C0C0C` | `--color-card` |
-| Card Foreground | `#FAFAFA` | `--color-card-foreground` |
-| Muted | `#181818` | `--color-muted` |
-| Muted Foreground | `#94A3B8` | `--color-muted-foreground` |
-| Border | `#3F3F46` | `--color-border` |
-| Destructive | `#EF4444` | `--color-destructive` |
-| On Destructive | `#000000` | `--color-on-destructive` |
-| Ring | `#FFFFFF` | `--color-ring` |
+| Role | Hex / Value | CSS Variable | Purpose |
+|------|-------------|--------------|---------|
+| Background | `#0B0D13` | `--background` | Deep Slate Night Ground |
+| Card / Surface | `#131622` | `--card` | Elevated Surface with Indigo tint |
+| Foreground | `#EEF2F6` | `--foreground` | Crisp High-Contrast Text |
+| Primary Surface | `#1E2235` | `--primary` | Sub-cards, elevated panels |
+| Primary FG | `#FFFFFF` | `--primary-foreground` | White text on primary |
+| Secondary | `#252B42` | `--secondary` | Tags, inactive chips |
+| Secondary FG | `#FFFFFF` | `--secondary-foreground` | White text on secondary |
+| Accent / CTA | `#6366F1` | `--accent` | Sharp Trust Indigo Action |
+| Accent Hover | `#4F46E5` | `--accent-hover` | Deepened Indigo Hover |
+| Accent FG | `#FFFFFF` | `--accent-foreground` | Text on Accent Button |
+| Muted | `#111420` | `--muted` | Deep recessed inputs |
+| Muted Foreground | `#8B95A5` | `--muted-foreground` | Secondary helper text |
+| Border | `rgba(99, 102, 241, 0.12)` | `--border` | Subtle Indigo Glass Border |
+| Border Hover | `rgba(99, 102, 241, 0.32)` | `--border-hover` | Interactive Border Glow |
+| Ring | `#6366F1` | `--ring` | Accessibility Focus Ring |
+| Destructive | `#EF4444` | `--destructive` | Error states |
 
-**Color Notes:** Pure black + white contrast
-
-### Typography
-
-- **Heading Font:** Archivo
-- **Body Font:** Space Grotesk
-- **Mood:** minimal, portfolio, designer, creative, clean, artistic
-- **Google Fonts:** [Archivo + Space Grotesk](https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap)
-
-**CSS Import:**
-```css
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-```
-
-### Spacing Variables
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--space-xs` | `4px` / `0.25rem` | Tight gaps |
-| `--space-sm` | `8px` / `0.5rem` | Icon gaps, inline spacing |
-| `--space-md` | `16px` / `1rem` | Standard padding |
-| `--space-lg` | `24px` / `1.5rem` | Section padding |
-| `--space-xl` | `32px` / `2rem` | Large gaps |
-| `--space-2xl` | `48px` / `3rem` | Section margins |
-| `--space-3xl` | `64px` / `4rem` | Hero padding |
-
-### Shadow Depths
-
-| Level | Value | Usage |
-|-------|-------|-------|
-| `--shadow-sm` | `0 1px 2px rgba(0,0,0,0.05)` | Subtle lift |
-| `--shadow-md` | `0 4px 6px rgba(0,0,0,0.1)` | Cards, buttons |
-| `--shadow-lg` | `0 10px 15px rgba(0,0,0,0.1)` | Modals, dropdowns |
-| `--shadow-xl` | `0 20px 25px rgba(0,0,0,0.15)` | Hero images, featured cards |
+**Color Psychology:**
+- `#0B0D13` + `#131622`: Deep slate tones give an immediate impression of reliability, engineering discipline, and zero fluff.
+- `#6366F1`: Electric Indigo is the benchmark color used by modern developer tool leaders (Linear, Raycast, Vercel) to signify intelligent software craft and high precision.
 
 ---
 
-## Component Specs
+## Typography
 
-### Buttons
-
-```css
-/* Primary Button */
-.btn-primary {
-  background: #F8FAFC;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 200ms ease;
-  cursor: pointer;
-}
-
-.btn-primary:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-/* Secondary Button */
-.btn-secondary {
-  background: transparent;
-  color: #18181B;
-  border: 2px solid #18181B;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 200ms ease;
-  cursor: pointer;
-}
-```
-
-### Cards
-
-```css
-.card {
-  background: #000000;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: var(--shadow-md);
-  transition: all 200ms ease;
-  cursor: pointer;
-}
-
-.card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
-}
-```
-
-### Inputs
-
-```css
-.input {
-  padding: 12px 16px;
-  border: 1px solid #E2E8F0;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: border-color 200ms ease;
-}
-
-.input:focus {
-  border-color: #18181B;
-  outline: none;
-  box-shadow: 0 0 0 3px #18181B20;
-}
-```
-
-### Modals
-
-```css
-.modal-overlay {
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-}
-
-.modal {
-  background: white;
-  border-radius: 16px;
-  padding: 32px;
-  box-shadow: var(--shadow-xl);
-  max-width: 500px;
-  width: 90%;
-}
-```
+- **Heading Font:** Archivo / Inter
+- **Body Font:** Space Grotesk / Iranian Sans-Serif
+- **Code / Metrics Font:** IBM Plex Mono / JetBrains Mono
 
 ---
 
-## Style Guidelines
+## Spacing & Elevation
 
-**Style:** Motion-Driven
-
-**Keywords:** Animation-heavy, microinteractions, smooth transitions, scroll effects, parallax, entrance anim, page transitions
-
-**Best For:** Portfolio sites, storytelling platforms, interactive experiences, entertainment apps, creative, SaaS
-
-**Key Effects:** Scroll anim (Intersection Observer), hover (300-400ms), entrance, parallax (3-5 layers), page transitions
-
-### Page Pattern
-
-**Pattern Name:** Scroll-Triggered Storytelling
-
-- **Conversion Strategy:** Keep the narrative understandable without scroll-driven effects. Use progress indicator. Mobile: simplify animations. Keep DOM reading order complete; disable parallax and scroll-scrub under reduced motion. Pause scroll animation when offscreen or hidden and render each chapter in its final readable state under reduced motion.
-- **CTA Placement:** End of each chapter (mini) + Final climax CTA
-- **Section Order:** Intro hook > Chapter 1 (problem) > Chapter 2 (journey) > Chapter 3 (solution) > Climax CTA
+| Token | Value |
+|-------|-------|
+| `--space-xs` | `4px` |
+| `--space-sm` | `8px` |
+| `--space-md` | `16px` |
+| `--space-lg` | `24px` |
+| `--space-xl` | `32px` |
+| `--space-2xl` | `48px` |
+| `--space-3xl` | `64px` |
 
 ---
 
-## Anti-Patterns (Do NOT Use)
+## Verification & Anti-Patterns
 
-- ❌ Heavy text
-- ❌ Poor image showcase
-
-### Additional Forbidden Patterns
-
-- ❌ **Emojis as icons** — Use SVG icons (Heroicons, Lucide, Simple Icons)
-- ❌ **Missing cursor:pointer** — All clickable elements must have cursor:pointer
-- ❌ **Layout-shifting hovers** — Avoid scale transforms that shift layout
-- ❌ **Low contrast text** — Maintain 4.5:1 minimum contrast ratio
-- ❌ **Instant state changes** — Always use transitions (150-300ms)
-- ❌ **Invisible focus states** — Focus states must be visible for a11y
-
----
-
-## Pre-Delivery Checklist
-
-Before delivering any UI code, verify:
-
-- [ ] No emojis used as icons (use SVG instead)
-- [ ] All icons from consistent icon set (Heroicons/Lucide)
-- [ ] `cursor-pointer` on all clickable elements
-- [ ] Hover states with smooth transitions (150-300ms)
-- [ ] Light mode: text contrast 4.5:1 minimum
-- [ ] Focus states visible for keyboard navigation
-- [ ] `prefers-reduced-motion` respected
-- [ ] Responsive: 375px, 768px, 1024px, 1440px
-- [ ] No content hidden behind fixed navbars
-- [ ] No horizontal scroll on mobile
+- ❌ No raw unstyled emojis as UI controls.
+- ❌ No low-contrast muted text below 4.5:1.
+- ❌ No layout-shifting hover effects.
+- ✅ All interactive buttons have minimum 44px touch targets.
+- ✅ Visible 2px indigo focus rings for keyboard navigation.
+- ✅ Full support for `prefers-reduced-motion`.

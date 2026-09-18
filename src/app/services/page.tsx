@@ -12,11 +12,11 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <div className="py-20 md:py-28 bg-black bg-grid-pattern min-h-screen">
+    <div className="py-20 md:py-28 bg-[#0B0D13] bg-grid-pattern min-h-screen">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
         <div className="max-w-2xl mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-neutral-400 text-xs font-mono uppercase tracking-widest mb-3">
-            <span className="h-1.5 w-1.5 rounded-full bg-white" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950/40 border border-indigo-500/20 text-indigo-300 text-xs font-mono uppercase tracking-widest mb-3">
+            <span className="h-1.5 w-1.5 rounded-full bg-indigo-400" />
             <span>خدمات و مدل‌های همکاری</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-4 leading-tight">
@@ -31,15 +31,15 @@ export default function ServicesPage() {
           {services.map((service, index) => (
             <div
               key={service.id}
-              className="relative rounded-3xl border border-white/[0.08] bg-[#0C0C0C] p-8 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 hover:border-white/20 transition-all duration-300 shadow-[0_0_40px_rgba(0,0,0,0.6)]"
+              className="relative rounded-3xl border border-indigo-500/15 bg-[#131622] p-8 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 hover:border-indigo-500/35 transition-all duration-300 shadow-[0_0_40px_rgba(5,7,12,0.6)]"
             >
-              <div className="absolute inset-x-8 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+              <div className="absolute inset-x-8 top-0 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent" />
 
               <div className="lg:col-span-5 space-y-4">
-                <span className="text-xs font-mono text-neutral-500 bg-white/[0.03] px-2.5 py-1 rounded border border-white/5">
+                <span className="text-xs font-mono text-indigo-300 bg-indigo-950/50 px-2.5 py-1 rounded border border-indigo-500/20">
                   // سرویس ۰{index + 1}
                 </span>
-                <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">{service.title}</h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight group-hover:text-indigo-200">{service.title}</h2>
                 <p className="text-sm text-neutral-400 leading-relaxed">
                   {service.fullDesc}
                 </p>
@@ -47,7 +47,7 @@ export default function ServicesPage() {
                   {service.techTags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-md bg-white/[0.03] px-2.5 py-1 text-xs font-mono text-neutral-300 border border-white/5"
+                      className="rounded-md bg-indigo-950/30 px-2.5 py-1 text-xs font-mono text-indigo-200 border border-indigo-500/15"
                     >
                       {tag}
                     </span>
@@ -56,14 +56,14 @@ export default function ServicesPage() {
               </div>
 
               <div className="lg:col-span-7 space-y-4">
-                <h3 className="text-xs font-mono uppercase text-neutral-400 tracking-wider">
+                <h3 className="text-xs font-mono uppercase text-indigo-300/80 tracking-wider">
                   خروجی‌های اختصاصی و تعهدات اسپرینت:
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {service.deliverables.map((d) => (
                     <div
                       key={d}
-                      className="flex items-start gap-3 p-4 rounded-xl bg-[#070707] border border-white/[0.06] text-xs sm:text-sm text-neutral-200"
+                      className="flex items-start gap-3 p-4 rounded-xl bg-[#0D1018] border border-indigo-500/15 text-xs sm:text-sm text-neutral-200"
                     >
                       <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
                       <span className="leading-snug">{d}</span>
@@ -77,7 +77,7 @@ export default function ServicesPage() {
 
         <div className="mt-20 text-center">
           <Link href="/#intake">
-            <Button size="lg" variant="primary" className="shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+            <Button size="lg" variant="primary">
               <Sparkles className="h-4 w-4" />
               <span>درخواست برآورد هزینه برای پروژه شما</span>
               <ArrowUpRight className="h-4 w-4" />

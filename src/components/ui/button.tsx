@@ -9,13 +9,13 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "primary", size = "md", children, ...props }, ref) => {
     const baseStyles =
-      "inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black disabled:pointer-events-none disabled:opacity-40 select-none cursor-pointer";
+      "inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0D13] disabled:pointer-events-none disabled:opacity-40 select-none cursor-pointer";
 
     const variants = {
-      primary: "bg-[#FAFAFA] text-[#0F172A] hover:bg-white hover:shadow-[0_0_25px_rgba(255,255,255,0.3)] active:scale-[0.98]",
-      secondary: "bg-[#18181B] text-white hover:bg-[#27272A] border border-white/10 hover:border-white/20 active:scale-[0.98]",
-      outline: "bg-transparent text-white border border-white/15 hover:border-white/40 hover:bg-white/[0.05] active:scale-[0.98]",
-      ghost: "bg-transparent text-neutral-400 hover:text-white hover:bg-white/5",
+      primary: "bg-indigo-600 text-white hover:bg-indigo-500 hover:shadow-[0_0_25px_rgba(99,102,241,0.45)] active:scale-[0.98]",
+      secondary: "bg-[#1E2235] text-white hover:bg-[#252B42] border border-indigo-500/20 hover:border-indigo-500/40 active:scale-[0.98]",
+      outline: "bg-transparent text-[#EEF2F6] border border-indigo-500/25 hover:border-indigo-400/60 hover:bg-indigo-500/10 active:scale-[0.98]",
+      ghost: "bg-transparent text-neutral-400 hover:text-white hover:bg-indigo-500/10",
     };
 
     const sizes = {

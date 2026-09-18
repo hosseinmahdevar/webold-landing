@@ -30,22 +30,22 @@ export default async function ProjectDetailPage({ params }: Props) {
   }
 
   return (
-    <article className="py-20 md:py-28 bg-black bg-grid-pattern min-h-screen">
+    <article className="py-20 md:py-28 bg-[#0B0D13] bg-grid-pattern min-h-screen">
       <div className="mx-auto max-w-[960px] px-4 sm:px-6">
         {/* Back Link */}
         <div className="mb-10">
           <Link
             href="/work"
-            className="text-xs font-mono text-neutral-400 hover:text-white inline-flex items-center gap-2 transition-colors px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/10 hover:border-white/20"
+            className="text-xs font-mono text-neutral-400 hover:text-white inline-flex items-center gap-2 transition-colors px-3 py-1.5 rounded-lg bg-indigo-950/40 border border-indigo-500/20 hover:border-indigo-500/40"
           >
-            <ArrowLeft className="h-3.5 w-3.5 rotate-180" />
+            <ArrowLeft className="h-3.5 w-3.5 rotate-180 text-indigo-400" />
             <span>بازگشت به فهرست پروژه‌ها</span>
           </Link>
         </div>
 
         {/* Title and Tag */}
         <div className="space-y-4 mb-12">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.04] px-3.5 py-1.5 text-xs font-mono text-neutral-300 border border-white/10">
+          <div className="inline-flex items-center gap-2 rounded-full bg-indigo-950/50 px-3.5 py-1.5 text-xs font-mono text-indigo-200 border border-indigo-500/25">
             <span>{project.categoryLabel}</span>
             <span>•</span>
             <span className="text-white font-semibold">{project.client}</span>
@@ -59,7 +59,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         </div>
 
         {/* KPI Strip */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 p-6 sm:p-8 rounded-2xl border border-white/[0.08] bg-[#0C0C0C] mb-14 font-mono">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 p-6 sm:p-8 rounded-2xl border border-indigo-500/15 bg-[#131622] mb-14 font-mono">
           <div className="space-y-1">
             <div className="text-xs text-neutral-400 flex items-center gap-1.5">
               <TrendingUp className="h-3.5 w-3.5 text-emerald-400" />
@@ -69,14 +69,14 @@ export default async function ProjectDetailPage({ params }: Props) {
           </div>
           <div className="space-y-1">
             <div className="text-xs text-neutral-400 flex items-center gap-1.5">
-              <Clock className="h-3.5 w-3.5 text-neutral-400" />
+              <Clock className="h-3.5 w-3.5 text-indigo-400" />
               <span>مدت زمان اسپرینت</span>
             </div>
             <div className="text-base sm:text-lg font-bold text-white">{project.timeline || "۸ هفته"}</div>
           </div>
           <div className="col-span-2 sm:col-span-1 space-y-1">
             <div className="text-xs text-neutral-400 flex items-center gap-1.5">
-              <Layers className="h-3.5 w-3.5 text-neutral-400" />
+              <Layers className="h-3.5 w-3.5 text-cyan-400" />
               <span>استک محوری</span>
             </div>
             <div className="text-sm font-bold text-white">{project.techStack.slice(0, 3).join(" • ")}</div>
@@ -84,7 +84,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         </div>
 
         {/* Featured Image Frame */}
-        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/10 mb-16 bg-neutral-900 shadow-[0_0_40px_rgba(0,0,0,0.8)]">
+        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-indigo-500/20 mb-16 bg-[#0B0D13] shadow-[0_0_40px_rgba(5,7,12,0.8)]">
           <img
             src={project.image}
             alt={project.title}
@@ -93,10 +93,10 @@ export default async function ProjectDetailPage({ params }: Props) {
         </div>
 
         {/* Narrative Chapters */}
-        <div className="space-y-14 border-b border-white/[0.08] pb-16">
+        <div className="space-y-14 border-b border-indigo-500/10 pb-16">
           {/* Challenge */}
           <section className="space-y-3">
-            <div className="text-xs font-mono uppercase tracking-widest text-neutral-400">// چالش و مسئله اصلی</div>
+            <div className="text-xs font-mono uppercase tracking-widest text-indigo-400">// چالش و مسئله اصلی</div>
             <h2 className="text-2xl font-bold text-white tracking-tight">مسئله کارفرما قبل از شروع پروژه</h2>
             <p className="text-base text-neutral-300 leading-relaxed">
               {project.challenge || project.description}
@@ -105,7 +105,7 @@ export default async function ProjectDetailPage({ params }: Props) {
 
           {/* Solution */}
           <section className="space-y-3">
-            <div className="text-xs font-mono uppercase tracking-widest text-neutral-400">// رویکرد مهندسی و راه‌حل</div>
+            <div className="text-xs font-mono uppercase tracking-widest text-indigo-400">// رویکرد مهندسی و راه‌حل</div>
             <h2 className="text-2xl font-bold text-white tracking-tight">معماری نرم‌افزار و بازنویسی استک</h2>
             <p className="text-base text-neutral-300 leading-relaxed">
               {project.solution || "طراحی و توسعه اختصاصی بر پایه Next.js 15 با تمرکز بر رندرینگ بهینه سمت سرور، حداقل حجم باندل و سرعت لود فوق‌سریع."}
@@ -114,11 +114,11 @@ export default async function ProjectDetailPage({ params }: Props) {
 
           {/* Deliverables */}
           <section className="space-y-4">
-            <div className="text-xs font-mono uppercase tracking-widest text-neutral-400">// خروجی‌های تحویل‌داده‌شده</div>
+            <div className="text-xs font-mono uppercase tracking-widest text-indigo-400">// خروجی‌های تحویل‌داده‌شده</div>
             <h2 className="text-2xl font-bold text-white tracking-tight">لیست تحویل‌دادنی‌های اسپرینت</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {project.deliverables.map((item) => (
-                <div key={item} className="flex items-start gap-3 text-sm text-neutral-200 bg-[#0C0C0C] p-4 rounded-xl border border-white/[0.08]">
+                <div key={item} className="flex items-start gap-3 text-sm text-neutral-200 bg-[#131622] p-4 rounded-xl border border-indigo-500/15">
                   <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
                   <span className="leading-snug">{item}</span>
                 </div>
@@ -128,7 +128,7 @@ export default async function ProjectDetailPage({ params }: Props) {
 
           {/* Results */}
           <section className="space-y-3">
-            <div className="text-xs font-mono uppercase tracking-widest text-neutral-400">// تأثیر و نتیجه نهایی</div>
+            <div className="text-xs font-mono uppercase tracking-widest text-indigo-400">// تأثیر و نتیجه نهایی</div>
             <h2 className="text-2xl font-bold text-white tracking-tight">تأثیر ملموس بر کسب‌وکار</h2>
             <p className="text-base text-neutral-300 leading-relaxed">
               {project.impact || "ارتقای مستقیم رضایت کاربران، بهبود رتبه سئو و کاهش چشمگیر زمان لود صفحه."}
@@ -138,8 +138,8 @@ export default async function ProjectDetailPage({ params }: Props) {
 
         {/* Next Step Call to Action */}
         <div className="pt-16 text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-neutral-400 text-xs font-mono uppercase">
-            <Sparkles className="h-3.5 w-3.5 text-white" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950/40 border border-indigo-500/20 text-indigo-300 text-xs font-mono uppercase">
+            <Sparkles className="h-3.5 w-3.5 text-indigo-400" />
             <span>پروژه بعدی شما</span>
           </div>
           <h3 className="text-3xl font-bold text-white">آیا ایده‌ای مشابه در ذهن دارید؟</h3>
@@ -148,7 +148,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           </p>
           <div className="pt-3">
             <Link href="/#intake">
-              <Button size="lg" variant="primary" className="shadow-[0_0_25px_rgba(255,255,255,0.2)]">
+              <Button size="lg" variant="primary">
                 <span>شروع استعلام و برآورد زمان و هزینه</span>
               </Button>
             </Link>

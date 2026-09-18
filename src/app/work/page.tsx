@@ -11,11 +11,11 @@ export const metadata: Metadata = {
 
 export default function WorkPage() {
   return (
-    <div className="py-20 md:py-28 bg-black bg-grid-pattern min-h-screen">
+    <div className="py-20 md:py-28 bg-[#0B0D13] bg-grid-pattern min-h-screen">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
         <div className="max-w-2xl mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-neutral-400 text-xs font-mono uppercase tracking-widest mb-3">
-            <span className="h-1.5 w-1.5 rounded-full bg-white" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950/40 border border-indigo-500/20 text-indigo-300 text-xs font-mono uppercase tracking-widest mb-3">
+            <span className="h-1.5 w-1.5 rounded-full bg-indigo-400" />
             <span>پورتفولیو و پرونده‌های فنی</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-4 leading-tight">
@@ -31,19 +31,19 @@ export default function WorkPage() {
             <Link
               key={project.slug}
               href={`/work/${project.slug}`}
-              className="group block rounded-2xl border border-white/[0.08] bg-[#0C0C0C] p-6 hover:border-white/25 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.06)] relative overflow-hidden"
+              className="group block rounded-2xl border border-indigo-500/15 bg-[#131622] p-6 hover:border-indigo-500/40 transition-all duration-300 hover:shadow-[0_0_35px_rgba(99,102,241,0.14)] relative overflow-hidden"
             >
               {/* Top gradient highlight line */}
-              <div className="absolute inset-x-6 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/15 to-transparent group-hover:via-white/40 transition-all" />
+              <div className="absolute inset-x-6 top-0 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent group-hover:via-indigo-400/70 transition-all" />
 
-              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-neutral-900 mb-6 border border-white/5">
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#0B0D13] mb-6 border border-indigo-500/10">
                 <img
                   src={project.image}
                   alt={project.title}
                   className="h-full w-full object-cover object-center grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                   loading="lazy"
                 />
-                <div className="absolute top-3 right-3 rounded-lg bg-black/80 px-3 py-1.5 text-xs font-mono text-neutral-200 backdrop-blur-md border border-white/10">
+                <div className="absolute top-3 right-3 rounded-lg bg-[#0B0D13]/85 px-3 py-1.5 text-xs font-mono text-indigo-200 backdrop-blur-md border border-indigo-500/20">
                   {project.categoryLabel}
                 </div>
                 <div className="absolute bottom-3 right-3 left-3 flex items-center justify-between pointer-events-none">
@@ -56,10 +56,10 @@ export default function WorkPage() {
 
               <div className="space-y-3">
                 <div className="flex items-center justify-between gap-4">
-                  <h2 className="text-xl font-bold text-white group-hover:text-neutral-200 transition-colors">
+                  <h2 className="text-xl font-bold text-white group-hover:text-indigo-200 transition-colors">
                     {project.title}
                   </h2>
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/5 border border-white/10 text-neutral-400 group-hover:bg-white group-hover:text-black transition-all">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-indigo-950/40 border border-indigo-500/20 text-indigo-300 group-hover:bg-indigo-600 group-hover:text-white transition-all">
                     <ArrowUpRight className="h-4 w-4" />
                   </div>
                 </div>
@@ -67,11 +67,11 @@ export default function WorkPage() {
                   {project.headline}
                 </p>
 
-                <div className="flex flex-wrap gap-2 pt-4 border-t border-white/[0.06]">
+                <div className="flex flex-wrap gap-2 pt-4 border-t border-indigo-500/10">
                   {project.techStack.map((tech) => (
                     <span
                       key={tech}
-                      className="rounded-md bg-white/[0.04] border border-white/[0.06] px-2.5 py-1 text-xs font-mono text-neutral-300 group-hover:border-white/15 transition-colors"
+                      className="rounded-md bg-indigo-950/30 border border-indigo-500/15 px-2.5 py-1 text-xs font-mono text-indigo-200/90 group-hover:border-indigo-500/30 transition-colors"
                     >
                       {tech}
                     </span>

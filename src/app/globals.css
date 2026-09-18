@@ -2,21 +2,22 @@
 
 @layer base {
   :root {
-    --background: #000000;
-    --foreground: #FAFAFA;
-    --card: #0C0C0C;
-    --card-foreground: #FAFAFA;
-    --primary: #18181B;
+    --background: #0B0D13;
+    --foreground: #EEF2F6;
+    --card: #131622;
+    --card-foreground: #EEF2F6;
+    --primary: #1E2235;
     --primary-foreground: #FFFFFF;
-    --secondary: #27272A;
+    --secondary: #252B42;
     --secondary-foreground: #FFFFFF;
-    --muted: #181818;
-    --muted-foreground: #94A3B8;
-    --accent: #F8FAFC;
-    --accent-foreground: #0F172A;
-    --border: rgba(255, 255, 255, 0.08);
-    --border-hover: rgba(255, 255, 255, 0.22);
-    --ring: #FFFFFF;
+    --muted: #111420;
+    --muted-foreground: #8B95A5;
+    --accent: #6366F1;
+    --accent-hover: #4F46E5;
+    --accent-foreground: #FFFFFF;
+    --border: rgba(99, 102, 241, 0.12);
+    --border-hover: rgba(99, 102, 241, 0.32);
+    --ring: #6366F1;
     --destructive: #EF4444;
 
     /* Spacing Scale */
@@ -29,8 +30,9 @@
     --space-3xl: 64px;
 
     /* Shadows */
-    --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.7);
-    --shadow-glow: 0 0 35px -5px rgba(255, 255, 255, 0.07);
+    --shadow-card: 0 4px 20px -2px rgba(5, 7, 12, 0.7);
+    --shadow-glow: 0 0 35px -5px rgba(99, 102, 241, 0.18);
+    --shadow-accent: 0 0 25px rgba(99, 102, 241, 0.35);
   }
 
   * {
@@ -55,16 +57,20 @@
 .bg-grid-pattern {
   background-size: 40px 40px;
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(99, 102, 241, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.04) 1px, transparent 1px);
 }
 
 .ambient-glow {
-  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08) 0%, rgba(0, 0, 0, 0) 65%);
+  background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.16) 0%, rgba(11, 13, 19, 0) 70%);
+}
+
+.ambient-glow-cyan {
+  background: radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.09) 0%, rgba(11, 13, 19, 0) 65%);
 }
 
 .ambient-glow-emerald {
-  background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.06) 0%, rgba(0, 0, 0, 0) 60%);
+  background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.08) 0%, rgba(11, 13, 19, 0) 60%);
 }
 
 /* Card Luxury Glow & Border */
@@ -86,20 +92,20 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: #0B0D13;
 }
 ::-webkit-scrollbar-thumb {
-  background: #27272A;
+  background: #252B42;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3F3F46;
+  background: #384266;
 }
 
 /* Selection */
 ::selection {
-  background: #FFFFFF;
-  color: #000000;
+  background: #6366F1;
+  color: #FFFFFF;
 }
 
 /* Reduced Motion */

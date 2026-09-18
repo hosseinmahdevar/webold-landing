@@ -2,7 +2,7 @@ import * as React from "react";
 import type { Metadata } from "next";
 import { siteConfig } from "@/data/site-config";
 import { IntakeForm } from "@/components/sections/intake-form";
-import { MapPin, Phone, Smartphone, Mail, HelpCircle, MessageSquare } from "lucide-react";
+import { MapPin, Phone, Smartphone, Mail, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "تماس با استودیو وبولد",
@@ -26,11 +26,11 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="py-20 md:py-28 bg-black bg-grid-pattern min-h-screen">
+    <div className="py-20 md:py-28 bg-[#0B0D13] bg-grid-pattern min-h-screen">
       <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
         <div className="max-w-2xl mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-neutral-400 text-xs font-mono uppercase tracking-widest mb-3">
-            <span className="h-1.5 w-1.5 rounded-full bg-white" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950/40 border border-indigo-500/20 text-indigo-300 text-xs font-mono uppercase tracking-widest mb-3">
+            <span className="h-1.5 w-1.5 rounded-full bg-indigo-400" />
             <span>راه‌های ارتباطی و مشاوره</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-4 leading-tight">
@@ -43,8 +43,8 @@ export default function ContactPage() {
 
         {/* Contact Info Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-          <div className="rounded-2xl border border-white/[0.08] bg-[#0C0C0C] p-7 space-y-4 hover:border-white/20 transition-all">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.05] border border-white/10 text-white">
+          <div className="rounded-2xl border border-indigo-500/15 bg-[#131622] p-7 space-y-4 hover:border-indigo-500/35 transition-all">
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-950/40 border border-indigo-500/20 text-indigo-400">
               <MapPin className="h-5 w-5" />
             </div>
             <h3 className="text-base font-bold text-white">دفتر مرکزی</h3>
@@ -53,47 +53,47 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-white/[0.08] bg-[#0C0C0C] p-7 space-y-4 hover:border-white/20 transition-all">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.05] border border-white/10 text-white">
+          <div className="rounded-2xl border border-indigo-500/15 bg-[#131622] p-7 space-y-4 hover:border-indigo-500/35 transition-all">
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-950/40 border border-indigo-500/20 text-indigo-400">
               <Phone className="h-5 w-5" />
             </div>
             <h3 className="text-base font-bold text-white">تماس مستقیم با مهندسان</h3>
             <div className="space-y-2 text-sm font-mono text-neutral-300">
               <div className="flex items-center justify-between">
-                <span className="text-xs text-neutral-500 font-sans">تلفن دفتر:</span>
-                <a href={`tel:${siteConfig.contact.phone}`} className="hover:text-emerald-400 transition-colors" dir="ltr">
+                <span className="text-xs text-neutral-400 font-sans">تلفن دفتر:</span>
+                <a href={`tel:${siteConfig.contact.phone}`} className="hover:text-indigo-300 transition-colors" dir="ltr">
                   {siteConfig.contact.phoneDisplay}
                 </a>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-xs text-neutral-500 font-sans">موبایل / پشتیبانی:</span>
-                <a href={`tel:${siteConfig.contact.mobile}`} className="hover:text-emerald-400 transition-colors" dir="ltr">
+                <span className="text-xs text-neutral-400 font-sans">موبایل / پشتیبانی:</span>
+                <a href={`tel:${siteConfig.contact.mobile}`} className="hover:text-indigo-300 transition-colors" dir="ltr">
                   {siteConfig.contact.mobileDisplay}
                 </a>
               </div>
             </div>
           </div>
 
-          <div className="rounded-2xl border border-white/[0.08] bg-[#0C0C0C] p-7 space-y-4 hover:border-white/20 transition-all">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.05] border border-white/10 text-white">
+          <div className="rounded-2xl border border-indigo-500/15 bg-[#131622] p-7 space-y-4 hover:border-indigo-500/35 transition-all">
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-950/40 border border-indigo-500/20 text-indigo-400">
               <Mail className="h-5 w-5" />
             </div>
             <h3 className="text-base font-bold text-white">مکاتبه رسمی</h3>
             <p className="text-sm font-mono text-neutral-300">
-              <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-white transition-colors" dir="ltr">
+              <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-indigo-300 transition-colors" dir="ltr">
                 {siteConfig.contact.email}
               </a>
             </p>
-            <p className="text-xs text-neutral-500">
+            <p className="text-xs text-neutral-400">
               پاسخگویی حداکثر ظرف ۲ ساعت کاری
             </p>
           </div>
         </div>
 
         {/* FAQs */}
-        <div className="mb-20 border-y border-white/[0.08] py-16">
+        <div className="mb-20 border-y border-indigo-500/10 py-16">
           <div className="max-w-2xl mb-10">
-            <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-neutral-500 mb-2">
+            <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-indigo-300 mb-2">
               <HelpCircle className="h-4 w-4" />
               <span>پاسخ به سوالات پرتکرار</span>
             </div>
@@ -103,7 +103,7 @@ export default function ContactPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {faqs.map((faq) => (
-              <div key={faq.q} className="rounded-2xl border border-white/[0.08] bg-[#0C0C0C] p-6 space-y-3">
+              <div key={faq.q} className="rounded-2xl border border-indigo-500/15 bg-[#131622] p-6 space-y-3">
                 <h3 className="text-sm font-bold text-white leading-snug">{faq.q}</h3>
                 <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">{faq.a}</p>
               </div>

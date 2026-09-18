@@ -44,7 +44,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: "#0B0D13",
   width: "device-width",
   initialScale: 1,
 };
@@ -57,14 +57,14 @@ export default function RootLayout({
   const jsonLd = getOrganizationJsonLd();
 
   return (
-    <html lang="fa" dir="rtl" className="dark bg-black text-[#EDEDED]">
+    <html lang="fa" dir="rtl" className="dark bg-[#0B0D13] text-[#EEF2F6]">
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen bg-black text-[#EDEDED] flex flex-col font-sans antialiased selection:bg-white selection:text-black">
+      <body className="min-h-screen bg-[#0B0D13] text-[#EEF2F6] flex flex-col font-sans antialiased selection:bg-indigo-600 selection:text-white">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

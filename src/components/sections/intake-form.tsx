@@ -14,7 +14,6 @@ import {
   Phone,
   Mail,
   Sparkles,
-  ShieldAlert,
 } from "lucide-react";
 
 export function IntakeForm() {
@@ -99,16 +98,16 @@ export function IntakeForm() {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-black relative" id="intake">
+    <section className="py-24 md:py-32 bg-[#0B0D13] relative" id="intake">
       <div className="mx-auto max-w-[860px] px-4 sm:px-6">
-        <div className="relative rounded-3xl border border-white/[0.12] bg-[#0C0C0C] p-8 md:p-14 shadow-[0_0_50px_rgba(0,0,0,0.9)]">
+        <div className="relative rounded-3xl border border-indigo-500/20 bg-[#131622] p-8 md:p-14 shadow-[0_0_50px_rgba(5,7,12,0.9)]">
           {/* Top highlight light line */}
-          <div className="absolute inset-x-10 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+          <div className="absolute inset-x-10 top-0 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent" />
 
           {/* Section Header */}
           <div className="text-center max-w-xl mx-auto mb-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-neutral-400 text-xs font-mono uppercase tracking-widest mb-3">
-              <Sparkles className="h-3.5 w-3.5 text-white" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950/40 border border-indigo-500/20 text-indigo-300 text-xs font-mono uppercase tracking-widest mb-3">
+              <Sparkles className="h-3.5 w-3.5 text-indigo-400" />
               <span>شروع همکاری و برآورد زمان و هزینه</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
@@ -133,16 +132,16 @@ export function IntakeForm() {
               <div className="pt-6 flex flex-wrap justify-center gap-4 text-xs font-mono text-neutral-300">
                 <a
                   href={`tel:${siteConfig.contact.phone}`}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/15 hover:bg-white/[0.08] hover:text-white transition-all"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-950/40 border border-indigo-500/20 hover:bg-indigo-950/70 hover:text-white transition-all"
                 >
                   <Phone className="h-4 w-4 text-emerald-400" />
                   <span>تلفن دفتر: {siteConfig.contact.phoneDisplay}</span>
                 </a>
                 <a
                   href={`mailto:${siteConfig.contact.email}`}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/15 hover:bg-white/[0.08] hover:text-white transition-all"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-950/40 border border-indigo-500/20 hover:bg-indigo-950/70 hover:text-white transition-all"
                 >
-                  <Mail className="h-4 w-4 text-white" />
+                  <Mail className="h-4 w-4 text-indigo-400" />
                   <span>{siteConfig.contact.email}</span>
                 </a>
               </div>
@@ -150,9 +149,9 @@ export function IntakeForm() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-8">
               {/* Step Progress Bar */}
-              <div className="flex items-center justify-between pb-6 border-b border-white/[0.08] text-xs font-mono text-neutral-400">
+              <div className="flex items-center justify-between pb-6 border-b border-indigo-500/10 text-xs font-mono text-neutral-400">
                 <div className="flex items-center gap-2">
-                  <span className="text-white font-semibold">گام {step} از ۳:</span>
+                  <span className="text-indigo-300 font-semibold">گام {step} از ۳:</span>
                   <span>
                     {step === 1 && "انتخاب نوع پروژه و زمان‌بندی"}
                     {step === 2 && "محدوده سرمایه‌گذاری و بودجه"}
@@ -165,10 +164,10 @@ export function IntakeForm() {
                       key={s}
                       className={`h-2 rounded-full transition-all duration-300 ${
                         s === step
-                          ? "w-8 bg-white"
+                          ? "w-8 bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]"
                           : s < step
                           ? "w-4 bg-emerald-400"
-                          : "w-4 bg-white/10"
+                          : "w-4 bg-indigo-950/60"
                       }`}
                     />
                   ))}
@@ -192,8 +191,8 @@ export function IntakeForm() {
                             onClick={() => setProjectType(item.title)}
                             className={`flex items-start justify-between p-4 rounded-xl text-right transition-all cursor-pointer border ${
                               isSelected
-                                ? "bg-white text-black border-white shadow-[0_0_20px_rgba(255,255,255,0.15)]"
-                                : "bg-[#0E0E0E] text-neutral-300 border-white/[0.08] hover:border-white/20 hover:bg-[#121212]"
+                                ? "bg-indigo-600 text-white border-indigo-400 shadow-[0_0_20px_rgba(99,102,241,0.35)]"
+                                : "bg-[#0E111A] text-neutral-300 border-indigo-500/15 hover:border-indigo-500/35 hover:bg-[#161B2E]"
                             }`}
                           >
                             <div className="space-y-1 pr-1">
@@ -202,7 +201,7 @@ export function IntakeForm() {
                               </div>
                               <div
                                 className={`text-[11px] leading-snug ${
-                                  isSelected ? "text-neutral-700" : "text-neutral-400"
+                                  isSelected ? "text-indigo-100" : "text-neutral-400"
                                 }`}
                               >
                                 {item.desc}
@@ -211,8 +210,8 @@ export function IntakeForm() {
                             <div
                               className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border mt-0.5 ${
                                 isSelected
-                                  ? "border-black bg-black text-white"
-                                  : "border-white/20"
+                                  ? "border-white bg-white text-indigo-900"
+                                  : "border-indigo-500/30"
                               }`}
                             >
                               {isSelected && <Check className="h-3 w-3" />}
@@ -237,16 +236,16 @@ export function IntakeForm() {
                             onClick={() => setTimeline(item.label)}
                             className={`flex items-center justify-between p-3.5 rounded-xl text-right transition-all cursor-pointer border ${
                               isSelected
-                                ? "bg-white text-black border-white shadow-[0_0_20px_rgba(255,255,255,0.15)]"
-                                : "bg-[#0E0E0E] text-neutral-300 border-white/[0.08] hover:border-white/20 hover:bg-[#121212]"
+                                ? "bg-indigo-600 text-white border-indigo-400 shadow-[0_0_20px_rgba(99,102,241,0.35)]"
+                                : "bg-[#0E111A] text-neutral-300 border-indigo-500/15 hover:border-indigo-500/35 hover:bg-[#161B2E]"
                             }`}
                           >
                             <span className="text-xs font-semibold">{item.label}</span>
                             <span
                               className={`text-[10px] font-mono px-2 py-0.5 rounded ${
                                 isSelected
-                                  ? "bg-black/10 text-black font-semibold"
-                                  : "bg-white/5 text-neutral-400"
+                                  ? "bg-black/20 text-white font-semibold"
+                                  : "bg-indigo-950/40 text-indigo-300"
                               }`}
                             >
                               {item.badge}
@@ -263,7 +262,6 @@ export function IntakeForm() {
                       variant="primary"
                       size="md"
                       onClick={() => setStep(2)}
-                      className="shadow-[0_0_20px_rgba(255,255,255,0.2)]"
                     >
                       <span>مرحله بعد (بودجه پروژه)</span>
                       <ArrowLeft className="h-4 w-4" />
@@ -292,8 +290,8 @@ export function IntakeForm() {
                             onClick={() => setBudget(b.range)}
                             className={`flex items-start justify-between p-4 rounded-xl text-right transition-all cursor-pointer border ${
                               isSelected
-                                ? "bg-white text-black border-white shadow-[0_0_20px_rgba(255,255,255,0.15)]"
-                                : "bg-[#0E0E0E] text-neutral-300 border-white/[0.08] hover:border-white/20 hover:bg-[#121212]"
+                                ? "bg-indigo-600 text-white border-indigo-400 shadow-[0_0_20px_rgba(99,102,241,0.35)]"
+                                : "bg-[#0E111A] text-neutral-300 border-indigo-500/15 hover:border-indigo-500/35 hover:bg-[#161B2E]"
                             }`}
                           >
                             <div className="space-y-1">
@@ -302,7 +300,7 @@ export function IntakeForm() {
                               </div>
                               <div
                                 className={`text-[11px] leading-snug ${
-                                  isSelected ? "text-neutral-700" : "text-neutral-400"
+                                  isSelected ? "text-indigo-100" : "text-neutral-400"
                                 }`}
                               >
                                 {b.note}
@@ -311,8 +309,8 @@ export function IntakeForm() {
                             <div
                               className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border mt-0.5 ${
                                 isSelected
-                                  ? "border-black bg-black text-white"
-                                  : "border-white/20"
+                                  ? "border-white bg-white text-indigo-900"
+                                  : "border-indigo-500/30"
                               }`}
                             >
                               {isSelected && <Check className="h-3 w-3" />}
@@ -338,7 +336,6 @@ export function IntakeForm() {
                       variant="primary"
                       size="md"
                       onClick={() => setStep(3)}
-                      className="shadow-[0_0_20px_rgba(255,255,255,0.2)]"
                     >
                       <span>مرحله بعد (اطلاعات تماس)</span>
                       <ArrowLeft className="h-4 w-4" />
@@ -351,7 +348,7 @@ export function IntakeForm() {
               {step === 3 && (
                 <div className="space-y-6 animate-in fade-in duration-200">
                   <div>
-                    <label className="block text-xs font-mono uppercase text-neutral-300 mb-2">
+                    <label className="block text-xs font-mono uppercase text-indigo-300 mb-2">
                       نام و نام خانوادگی / نام شرکت یا استارتاپ *
                     </label>
                     <Input
@@ -360,12 +357,11 @@ export function IntakeForm() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       required
-                      className="bg-[#0E0E0E] border-white/10 focus:border-white"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase text-neutral-300 mb-2">
+                    <label className="block text-xs font-mono uppercase text-indigo-300 mb-2">
                       شماره تماس همراه یا ثابت مستقیم *
                     </label>
                     <Input
@@ -375,17 +371,17 @@ export function IntakeForm() {
                       onChange={(e) => setPhone(e.target.value)}
                       dir="ltr"
                       required
-                      className="bg-[#0E0E0E] border-white/10 focus:border-white font-mono"
+                      className="font-mono"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase text-neutral-300 mb-2">
+                    <label className="block text-xs font-mono uppercase text-indigo-300 mb-2">
                       توضیحات تکمیلی یا لینک به سایت/طرح فعلی (اختیاری)
                     </label>
                     <textarea
                       rows={3}
-                      className="flex w-full rounded-lg border border-white/10 bg-[#0E0E0E] px-3.5 py-2.5 text-sm text-white placeholder:text-neutral-500 focus:border-white focus:outline-none focus:ring-1 focus:ring-white/30 transition-all"
+                      className="flex w-full rounded-xl border border-indigo-500/20 bg-[#0E111A] px-4 py-2.5 text-sm text-[#EEF2F6] placeholder:text-neutral-500 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/25 transition-all"
                       placeholder="خلاصه‌ای از امکانات کلیدی مورد نیاز یا چالش‌های وب‌سایت فعلی شما..."
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
@@ -426,7 +422,6 @@ export function IntakeForm() {
                       variant="primary"
                       size="md"
                       disabled={loading}
-                      className="shadow-[0_0_25px_rgba(255,255,255,0.25)]"
                     >
                       {loading ? (
                         <>
