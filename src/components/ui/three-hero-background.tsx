@@ -86,8 +86,8 @@ export function ThreeHeroBackground() {
     if (ctx) {
       const gradient = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
       gradient.addColorStop(0, "rgba(255,255,255,1)");
-      gradient.addColorStop(0.3, "rgba(129,140,248,0.8)");
-      gradient.addColorStop(0.7, "rgba(99,102,241,0.2)");
+      gradient.addColorStop(0.3, "rgba(129,140,248,0.9)");
+      gradient.addColorStop(0.7, "rgba(99,102,241,0.4)");
       gradient.addColorStop(1, "rgba(0,0,0,0)");
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, 32, 32);
@@ -95,12 +95,12 @@ export function ThreeHeroBackground() {
     const particleTexture = new THREE.CanvasTexture(canvas);
 
     const particlesMaterial = new THREE.PointsMaterial({
-      size: 1.1,
+      size: 1.2,
       vertexColors: true,
       map: particleTexture,
       transparent: true,
       opacity: 0.85,
-      blending: THREE.AdditiveBlending,
+      blending: THREE.NormalBlending,
       depthWrite: false,
     });
 
@@ -114,20 +114,18 @@ export function ThreeHeroBackground() {
     const coreLineMaterial = new THREE.LineBasicMaterial({
       color: 0x6366f1,
       transparent: true,
-      opacity: 0.25,
-      blending: THREE.AdditiveBlending,
+      opacity: 0.35,
     });
     const coreMesh = new THREE.LineSegments(coreWireframe, coreLineMaterial);
     coreMesh.position.set(22, 6, -10);
     scene.add(coreMesh);
 
     // Inner glowing ring
-    const ringGeometry = new THREE.TorusGeometry(8.5, 0.05, 16, 64);
+    const ringGeometry = new THREE.TorusGeometry(8.5, 0.06, 16, 64);
     const ringMaterial = new THREE.MeshBasicMaterial({
       color: 0x0ea5e9,
       transparent: true,
-      opacity: 0.4,
-      blending: THREE.AdditiveBlending,
+      opacity: 0.45,
     });
     const ringMesh = new THREE.Mesh(ringGeometry, ringMaterial);
     ringMesh.position.set(22, 6, -10);
@@ -232,7 +230,7 @@ export function ThreeHeroBackground() {
   return (
     <div
       ref={containerRef}
-      className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-75 sm:opacity-85 mix-blend-screen"
+      className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-70 dark:opacity-85"
       aria-hidden="true"
     />
   );

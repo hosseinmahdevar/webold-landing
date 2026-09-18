@@ -44,7 +44,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0B0D13",
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#0B0D13" },
+    { media: "(prefers-color-scheme: light)", color: "#F8FAFC" },
+  ],
   width: "device-width",
   initialScale: 1,
 };
@@ -57,14 +60,30 @@ export default function RootLayout({
   const jsonLd = getOrganizationJsonLd();
 
   return (
-    <html lang="fa" dir="rtl" className="dark bg-[#0B0D13] text-[#EEF2F6]">
+    <html lang="fa" dir="rtl" className="dark" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'light') {
+                  document.documentElement.classList.remove('dark');
+                  document.documentElement.setAttribute('data-theme', 'light');
+                } else {
+                  document.documentElement.classList.add('dark');
+                  document.documentElement.setAttribute('data-theme', 'dark');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen bg-[#0B0D13] text-[#EEF2F6] flex flex-col font-sans antialiased selection:bg-indigo-600 selection:text-white">
+      <body className="min-h-screen bg-[var(--background)] text-[var(--foreground)] flex flex-col font-sans antialiased selection:bg-indigo-600 selection:text-white transition-colors duration-300">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
