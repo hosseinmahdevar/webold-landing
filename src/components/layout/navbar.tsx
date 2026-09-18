@@ -4,57 +4,72 @@ import * as React from "react";
 import Link from "next/link";
 import { siteConfig } from "@/data/site-config";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, Sparkles } from "lucide-react";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-black/80 backdrop-blur-xl transition-all">
-      <div className="mx-auto flex h-16 max-w-[1180px] items-center justify-between px-5">
+    <header className="sticky top-0 z-50 w-full border-b border-white/[0.08] bg-black/80 backdrop-blur-xl transition-all">
+      {/* Top micro border light */}
+      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
+
+      <div className="mx-auto flex h-16 max-w-[1180px] items-center justify-between px-4 sm:px-6">
         {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white text-black font-mono font-bold text-base transition-transform group-hover:scale-105">
+        <Link
+          href="/"
+          className="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 rounded-lg p-1 transition-transform"
+        >
+          <div className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-white text-black font-mono font-bold text-base shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-transform duration-300 group-hover:scale-105">
             W
           </div>
           <div className="flex flex-col">
-            <span className="font-semibold tracking-tight text-white text-base">
+            <span className="font-semibold tracking-tight text-white text-base leading-tight">
               {siteConfig.name}
             </span>
-            <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest -mt-0.5">
+            <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest leading-none mt-0.5">
               {siteConfig.domain}
             </span>
           </div>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-7">
+        <nav className="hidden md:flex items-center gap-1 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 backdrop-blur-md">
           {siteConfig.navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm text-neutral-400 hover:text-white transition-colors"
+              className="rounded-full px-3.5 py-1.5 text-xs font-medium text-neutral-300 hover:text-white hover:bg-white/[0.08] transition-all duration-200"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        {/* Action Button */}
+        {/* Action Button & Live Status */}
         <div className="hidden md:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/20 text-emerald-400 text-[11px] font-mono">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+            </span>
+            <span>۲ پروژه در اسپرینت جاری</span>
+          </div>
+
           <Link href="/#intake">
-            <Button size="sm" variant="primary">
+            <Button size="sm" variant="primary" className="shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_25px_rgba(255,255,255,0.25)]">
               <span>استعلام پروژه</span>
-              <ArrowUpRight className="h-3.5 w-3.5" />
+              <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Button>
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Button (Accessible touch target >= 44px) */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-neutral-300 hover:text-white"
-          aria-label="منو"
+          className="md:hidden flex h-11 w-11 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-neutral-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          aria-label={isOpen ? "بستن منو" : "باز کردن منو"}
+          aria-expanded={isOpen}
         >
           {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -62,23 +77,29 @@ export function Navbar() {
 
       {/* Mobile Nav Drawer */}
       {isOpen && (
-        <div className="md:hidden border-b border-white/10 bg-neutral-950 px-5 py-6 space-y-4 animate-in fade-in slide-in-from-top-2 duration-150">
-          <nav className="flex flex-col space-y-3">
+        <div className="md:hidden border-b border-white/10 bg-[#0C0C0C]/95 backdrop-blur-2xl px-5 py-6 space-y-4 animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-950/40 border border-emerald-500/20 text-emerald-400 text-xs font-mono mb-2">
+            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span>{siteConfig.availabilityStatus}</span>
+          </div>
+
+          <nav className="flex flex-col space-y-1">
             {siteConfig.navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="text-base text-neutral-300 hover:text-white py-1"
+                className="text-sm font-medium text-neutral-300 hover:text-white hover:bg-white/5 rounded-lg px-3 py-2.5 transition-colors"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
-          <div className="pt-2">
+          <div className="pt-2 border-t border-white/5">
             <Link href="/#intake" onClick={() => setIsOpen(false)}>
-              <Button size="md" variant="primary" className="w-full">
-                <span>استعلام و شروع پروژه</span>
+              <Button size="md" variant="primary" className="w-full justify-center">
+                <Sparkles className="h-4 w-4" />
+                <span>شروع پروژه و برآورد هزینه</span>
                 <ArrowUpRight className="h-4 w-4" />
               </Button>
             </Link>

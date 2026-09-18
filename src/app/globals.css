@@ -3,15 +3,34 @@
 @layer base {
   :root {
     --background: #000000;
-    --foreground: #EDEDED;
-    --card: #0A0A0A;
-    --card-foreground: #EDEDED;
+    --foreground: #FAFAFA;
+    --card: #0C0C0C;
+    --card-foreground: #FAFAFA;
+    --primary: #18181B;
+    --primary-foreground: #FFFFFF;
+    --secondary: #27272A;
+    --secondary-foreground: #FFFFFF;
+    --muted: #181818;
+    --muted-foreground: #94A3B8;
+    --accent: #F8FAFC;
+    --accent-foreground: #0F172A;
     --border: rgba(255, 255, 255, 0.08);
-    --border-hover: rgba(255, 255, 255, 0.20);
-    --muted: #52525B;
-    --muted-foreground: #A1A1AA;
-    --accent: #FFFFFF;
-    --accent-foreground: #000000;
+    --border-hover: rgba(255, 255, 255, 0.22);
+    --ring: #FFFFFF;
+    --destructive: #EF4444;
+
+    /* Spacing Scale */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+    --space-3xl: 64px;
+
+    /* Shadows */
+    --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.7);
+    --shadow-glow: 0 0 35px -5px rgba(255, 255, 255, 0.07);
   }
 
   * {
@@ -24,11 +43,41 @@
     font-feature-settings: "rlig" 1, "calt" 1;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
   html {
     scroll-behavior: smooth;
   }
+}
+
+/* Background Subtle Grid & Ambient Glow */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.ambient-glow {
+  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08) 0%, rgba(0, 0, 0, 0) 65%);
+}
+
+.ambient-glow-emerald {
+  background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.06) 0%, rgba(0, 0, 0, 0) 60%);
+}
+
+/* Card Luxury Glow & Border */
+.card-luxury {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.card-luxury:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-glow);
 }
 
 /* Custom minimal scrollbar */
@@ -51,4 +100,14 @@
 ::selection {
   background: #FFFFFF;
   color: #000000;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { projects } from "@/data/projects";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, CheckCircle2, Clock, Layers, TrendingUp } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Clock, Layers, TrendingUp, Sparkles } from "lucide-react";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!project) return { title: "پروژه یافت نشد" };
 
   return {
-    title: `${project.title} | کیس‌استادی`,
+    title: `${project.title} | کیس‌استادی استودیو وبولد`,
     description: project.description,
   };
 }
@@ -30,73 +30,74 @@ export default async function ProjectDetailPage({ params }: Props) {
   }
 
   return (
-    <article className="py-20 md:py-28">
-      <div className="mx-auto max-w-[960px] px-5">
-        {/* Breadcrumb */}
-        <div className="mb-8">
+    <article className="py-20 md:py-28 bg-black bg-grid-pattern min-h-screen">
+      <div className="mx-auto max-w-[960px] px-4 sm:px-6">
+        {/* Back Link */}
+        <div className="mb-10">
           <Link
             href="/work"
-            className="text-xs font-mono text-neutral-400 hover:text-white inline-flex items-center gap-1.5 transition-colors"
+            className="text-xs font-mono text-neutral-400 hover:text-white inline-flex items-center gap-2 transition-colors px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/10 hover:border-white/20"
           >
             <ArrowLeft className="h-3.5 w-3.5 rotate-180" />
-            <span>بازگشت به همه پروژه‌ها</span>
+            <span>بازگشت به فهرست پروژه‌ها</span>
           </Link>
         </div>
 
         {/* Title and Tag */}
-        <div className="space-y-4 mb-10">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs font-mono text-neutral-300 border border-white/10">
+        <div className="space-y-4 mb-12">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.04] px-3.5 py-1.5 text-xs font-mono text-neutral-300 border border-white/10">
             <span>{project.categoryLabel}</span>
             <span>•</span>
-            <span>{project.client}</span>
+            <span className="text-white font-semibold">{project.client}</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
             {project.title}
           </h1>
-          <p className="text-lg text-neutral-400 leading-relaxed max-w-2xl">
+          <p className="text-lg text-neutral-300 leading-relaxed max-w-2xl">
             {project.headline}
           </p>
         </div>
 
         {/* KPI Strip */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 p-6 rounded-xl border border-white/10 bg-[#0A0A0A] mb-12 font-mono">
-          <div>
-            <div className="text-xs text-neutral-500 mb-1 flex items-center gap-1.5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 p-6 sm:p-8 rounded-2xl border border-white/[0.08] bg-[#0C0C0C] mb-14 font-mono">
+          <div className="space-y-1">
+            <div className="text-xs text-neutral-400 flex items-center gap-1.5">
               <TrendingUp className="h-3.5 w-3.5 text-emerald-400" />
               <span>دستاورد اصلی</span>
             </div>
-            <div className="text-lg sm:text-xl font-bold text-emerald-400">{project.metric}</div>
+            <div className="text-xl sm:text-2xl font-bold text-emerald-400">{project.metric}</div>
           </div>
-          <div>
-            <div className="text-xs text-neutral-500 mb-1 flex items-center gap-1.5">
+          <div className="space-y-1">
+            <div className="text-xs text-neutral-400 flex items-center gap-1.5">
               <Clock className="h-3.5 w-3.5 text-neutral-400" />
-              <span>مدت زمان اجرا</span>
+              <span>مدت زمان اسپرینت</span>
             </div>
             <div className="text-base sm:text-lg font-bold text-white">{project.timeline || "۸ هفته"}</div>
           </div>
-          <div className="col-span-2 sm:col-span-1">
-            <div className="text-xs text-neutral-500 mb-1 flex items-center gap-1.5">
+          <div className="col-span-2 sm:col-span-1 space-y-1">
+            <div className="text-xs text-neutral-400 flex items-center gap-1.5">
               <Layers className="h-3.5 w-3.5 text-neutral-400" />
               <span>استک محوری</span>
             </div>
-            <div className="text-sm font-bold text-white">{project.techStack.slice(0, 2).join(" / ")}</div>
+            <div className="text-sm font-bold text-white">{project.techStack.slice(0, 3).join(" • ")}</div>
           </div>
         </div>
 
-        {/* Featured Image */}
-        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl border border-white/10 mb-14 bg-neutral-900">
+        {/* Featured Image Frame */}
+        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/10 mb-16 bg-neutral-900 shadow-[0_0_40px_rgba(0,0,0,0.8)]">
           <img
             src={project.image}
             alt={project.title}
-            className="h-full w-full object-cover object-center grayscale contrast-125"
+            className="h-full w-full object-cover object-center grayscale contrast-110"
           />
         </div>
 
-        {/* Story Body */}
-        <div className="space-y-12 border-b border-white/5 pb-16">
+        {/* Narrative Chapters */}
+        <div className="space-y-14 border-b border-white/[0.08] pb-16">
           {/* Challenge */}
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-white tracking-tight">چالش کارفرما</h2>
+            <div className="text-xs font-mono uppercase tracking-widest text-neutral-400">// چالش و مسئله اصلی</div>
+            <h2 className="text-2xl font-bold text-white tracking-tight">مسئله کارفرما قبل از شروع پروژه</h2>
             <p className="text-base text-neutral-300 leading-relaxed">
               {project.challenge || project.description}
             </p>
@@ -104,20 +105,22 @@ export default async function ProjectDetailPage({ params }: Props) {
 
           {/* Solution */}
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-white tracking-tight">معماری و راه‌حل مهندسی</h2>
+            <div className="text-xs font-mono uppercase tracking-widest text-neutral-400">// رویکرد مهندسی و راه‌حل</div>
+            <h2 className="text-2xl font-bold text-white tracking-tight">معماری نرم‌افزار و بازنویسی استک</h2>
             <p className="text-base text-neutral-300 leading-relaxed">
-              {project.solution || "طراحی و توسعه اختصاصی بر پایه Next.js با تمرکز بر حداقل حجم باندل و سرعت لود فوق‌سریع."}
+              {project.solution || "طراحی و توسعه اختصاصی بر پایه Next.js 15 با تمرکز بر رندرینگ بهینه سمت سرور، حداقل حجم باندل و سرعت لود فوق‌سریع."}
             </p>
           </section>
 
           {/* Deliverables */}
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-white tracking-tight">خروجی‌ها و تحویل‌دادنی‌ها</h2>
+            <div className="text-xs font-mono uppercase tracking-widest text-neutral-400">// خروجی‌های تحویل‌داده‌شده</div>
+            <h2 className="text-2xl font-bold text-white tracking-tight">لیست تحویل‌دادنی‌های اسپرینت</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {project.deliverables.map((item) => (
-                <div key={item} className="flex items-center gap-2.5 text-sm text-neutral-300 bg-white/5 p-3 rounded-lg border border-white/5">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
-                  <span>{item}</span>
+                <div key={item} className="flex items-start gap-3 text-sm text-neutral-200 bg-[#0C0C0C] p-4 rounded-xl border border-white/[0.08]">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span className="leading-snug">{item}</span>
                 </div>
               ))}
             </div>
@@ -125,7 +128,8 @@ export default async function ProjectDetailPage({ params }: Props) {
 
           {/* Results */}
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-white tracking-tight">نتیجه و تأثیر تجاری</h2>
+            <div className="text-xs font-mono uppercase tracking-widest text-neutral-400">// تأثیر و نتیجه نهایی</div>
+            <h2 className="text-2xl font-bold text-white tracking-tight">تأثیر ملموس بر کسب‌وکار</h2>
             <p className="text-base text-neutral-300 leading-relaxed">
               {project.impact || "ارتقای مستقیم رضایت کاربران، بهبود رتبه سئو و کاهش چشمگیر زمان لود صفحه."}
             </p>
@@ -133,15 +137,19 @@ export default async function ProjectDetailPage({ params }: Props) {
         </div>
 
         {/* Next Step Call to Action */}
-        <div className="pt-12 text-center space-y-4">
-          <h3 className="text-2xl font-bold text-white">آیا پروژه‌ای مشابه در ذهن دارید؟</h3>
-          <p className="text-sm text-neutral-400 max-w-md mx-auto">
-            بیایید در مورد نیازمندی‌ها و بودجه پروژه شما به صورت شفاف گفتگو کنیم.
+        <div className="pt-16 text-center space-y-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-neutral-400 text-xs font-mono uppercase">
+            <Sparkles className="h-3.5 w-3.5 text-white" />
+            <span>پروژه بعدی شما</span>
+          </div>
+          <h3 className="text-3xl font-bold text-white">آیا ایده‌ای مشابه در ذهن دارید؟</h3>
+          <p className="text-sm text-neutral-400 max-w-md mx-auto leading-relaxed">
+            بیایید در مورد ساختار فنی، زمان‌بندی و بودجه پروژه شما به صورت کاملاً شفاف گفتگو کنیم.
           </p>
-          <div className="pt-2">
+          <div className="pt-3">
             <Link href="/#intake">
-              <Button size="lg" variant="primary">
-                <span>شروع استعلام و مشاوره اختصاصی</span>
+              <Button size="lg" variant="primary" className="shadow-[0_0_25px_rgba(255,255,255,0.2)]">
+                <span>شروع استعلام و برآورد زمان و هزینه</span>
               </Button>
             </Link>
           </div>

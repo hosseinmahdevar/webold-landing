@@ -4,7 +4,18 @@ import * as React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { siteConfig } from "@/data/site-config";
-import { Check, CheckCircle2, AlertCircle, ArrowLeft, ArrowRight, Loader2, Phone, Mail } from "lucide-react";
+import {
+  Check,
+  CheckCircle2,
+  AlertCircle,
+  ArrowLeft,
+  ArrowRight,
+  Loader2,
+  Phone,
+  Mail,
+  Sparkles,
+  ShieldAlert,
+} from "lucide-react";
 
 export function IntakeForm() {
   const [step, setStep] = React.useState<number>(1);
@@ -21,25 +32,25 @@ export function IntakeForm() {
   const [error, setError] = React.useState<string | null>(null);
 
   const projectTypes = [
-    "وب‌اپلیکیشن اختصاصی",
-    "وب‌سایت شرکتی لوکس",
-    "فروشگاه اینترنتی مدرن",
-    "بازطراحی و ارتقای پرفورمنس",
+    { title: "وب‌اپلیکیشن اختصاصی", desc: "سامانه تحت وب ابری، پنل مشتری و داشبورد" },
+    { title: "وب‌سایت شرکتی لوکس", desc: "طراحی پرچمدار، برندینگ و معرفی خدمات" },
+    { title: "فروشگاه آنلاین مدرن", desc: "سیستم فروش با سرعت لود آنی و تسویه‌حساب سریع" },
+    { title: "بازطراحی و ارتقای پرفورمنس", desc: "بازنویسی سیستم قدیمی و رفع افت سرعت" },
   ];
 
   const timelines = [
-    "فوری (کمتر از ۱ ماه)",
-    "۱ تا ۲ ماه",
-    "۲ تا ۳ ماه",
-    "منعطف / در حال بررسی",
+    { label: "فوری (کمتر از ۱ ماه)", badge: "اسپرینت فشرده" },
+    { label: "۱ تا ۲ ماه", badge: "استاندارد" },
+    { label: "۲ تا ۳ ماه", badge: "پروژه جامع" },
+    { label: "منعطف / در حال بررسی", badge: "مشاوره فنی" },
   ];
 
   const budgets = [
-    "کمتر از ۳۰ میلیون تومان",
-    "۳۰ تا ۷۰ میلیون تومان",
-    "۷۰ تا ۱۵۰ میلیون تومان",
-    "بیش از ۱۵۰ میلیون / سازمانی",
-    "نیاز به مشاوره اولیه",
+    { range: "کمتر از ۳۰ میلیون تومان", note: "مناسب لندینگ‌پیج تک‌صفحه‌ای" },
+    { range: "۳۰ تا ۷۰ میلیون تومان", note: "مناسب وب‌سایت شرکتی مدرن" },
+    { range: "۷۰ تا ۱۵۰ میلیون تومان", note: "مناسب وب‌اپلیکیشن و فروشگاه اختصاصی" },
+    { range: "بیش از ۱۵۰ میلیون / سازمانی", note: "پلتفرم‌های بزرگ با معماری توزیع‌شده" },
+    { range: "نیاز به برآورد و مشاوره اولیه", note: "تعیین پس از جلسه بررسی فنی" },
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -47,12 +58,12 @@ export function IntakeForm() {
     setError(null);
 
     if (!name.trim() || name.trim().length < 2) {
-      setError("لطفاً نام خود را وارد کنید.");
+      setError("لطفاً نام خود یا نام مجموعه را وارد کنید.");
       return;
     }
 
     if (!phone.trim() || phone.trim().length < 8) {
-      setError("لطفاً شماره تماس معتبر وارد کنید.");
+      setError("لطفاً شماره تماس معتبر (همراه یا ثابت) وارد کنید.");
       return;
     }
 
@@ -78,56 +89,60 @@ export function IntakeForm() {
       if (res.ok && data.success) {
         setSubmitted(true);
       } else {
-        setError(data.message || "خطایی رخ داد. لطفاً با تلفن مستقیم تماس بگیرید.");
+        setError(data.message || "خطایی در ثبت رخ داد. لطفاً مستقیماً با تلفن دفتر تماس بگیرید.");
       }
     } catch {
-      setError("ارتباط با سرور برقرار نشد. لطفاً مستقیماً تماس بگیرید.");
+      setError("ارتباط با سرور برقرار نشد. لطفاً مستقیماً با دفتر تماس بگیرید.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <section className="py-24 bg-black" id="intake">
-      <div className="mx-auto max-w-[840px] px-5">
-        <div className="rounded-2xl border border-white/10 bg-[#0A0A0A] p-8 md:p-12">
-          {/* Header */}
+    <section className="py-24 md:py-32 bg-black relative" id="intake">
+      <div className="mx-auto max-w-[860px] px-4 sm:px-6">
+        <div className="relative rounded-3xl border border-white/[0.12] bg-[#0C0C0C] p-8 md:p-14 shadow-[0_0_50px_rgba(0,0,0,0.9)]">
+          {/* Top highlight light line */}
+          <div className="absolute inset-x-10 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+
+          {/* Section Header */}
           <div className="text-center max-w-xl mx-auto mb-10">
-            <div className="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-2">
-              شروع همکاری و استعلام هزینه
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-neutral-400 text-xs font-mono uppercase tracking-widest mb-3">
+              <Sparkles className="h-3.5 w-3.5 text-white" />
+              <span>شروع همکاری و برآورد زمان و هزینه</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
               پروژه خود را تعریف کنید
             </h2>
-            <p className="text-sm text-neutral-400">
-              با تکمیل این فرم کوتاه، استعلام دقیق دامنه و برآورد زمان‌بندی پروژه خود را دریافت کنید.
+            <p className="text-sm text-neutral-400 leading-relaxed">
+              با تکمیل این فرم در کمتر از ۱ دقیقه، پیشنهاد معماری فنی و پیش‌فاکتور شفاف اسپرینت‌ها را دریافت کنید.
             </p>
           </div>
 
           {submitted ? (
-            <div className="text-center py-12 space-y-5 animate-in fade-in zoom-in-95 duration-200">
-              <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-400">
+            <div className="text-center py-12 space-y-6 animate-in fade-in zoom-in-95 duration-300">
+              <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-400 shadow-[0_0_30px_rgba(16,185,129,0.2)]">
                 <CheckCircle2 className="h-8 w-8" />
               </div>
-              <h3 className="text-2xl font-bold text-white">
+              <h3 className="text-2xl md:text-3xl font-bold text-white">
                 درخواست شما با موفقیت ثبت شد!
               </h3>
-              <p className="text-sm text-neutral-400 max-w-md mx-auto leading-relaxed">
-                کارشناس ارشد فنی استودیو وبولد درخواست شما را بررسی کرده و ظرف حداکثر ۲ ساعت کاری با شما تماس خواهد گرفت.
+              <p className="text-sm text-neutral-300 max-w-md mx-auto leading-relaxed">
+                مهندس ارشد فنی استودیو وبولد اطلاعات پروژه شما را بررسی کرده و ظرف حداکثر ۲ ساعت کاری جهت هماهنگی جلسه دمو با شما تماس خواهد گرفت.
               </p>
-              <div className="pt-6 flex flex-wrap justify-center gap-4 text-xs font-mono text-neutral-400">
+              <div className="pt-6 flex flex-wrap justify-center gap-4 text-xs font-mono text-neutral-300">
                 <a
                   href={`tel:${siteConfig.contact.phone}`}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 hover:text-white"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/15 hover:bg-white/[0.08] hover:text-white transition-all"
                 >
-                  <Phone className="h-4 w-4" />
+                  <Phone className="h-4 w-4 text-emerald-400" />
                   <span>تلفن دفتر: {siteConfig.contact.phoneDisplay}</span>
                 </a>
                 <a
                   href={`mailto:${siteConfig.contact.email}`}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 hover:text-white"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/15 hover:bg-white/[0.08] hover:text-white transition-all"
                 >
-                  <Mail className="h-4 w-4" />
+                  <Mail className="h-4 w-4 text-white" />
                   <span>{siteConfig.contact.email}</span>
                 </a>
               </div>
@@ -135,14 +150,25 @@ export function IntakeForm() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-8">
               {/* Step Progress Bar */}
-              <div className="flex items-center justify-between pb-6 border-b border-white/5 text-xs font-mono text-neutral-400">
-                <span>گام {step} از ۳</span>
-                <div className="flex gap-1.5">
+              <div className="flex items-center justify-between pb-6 border-b border-white/[0.08] text-xs font-mono text-neutral-400">
+                <div className="flex items-center gap-2">
+                  <span className="text-white font-semibold">گام {step} از ۳:</span>
+                  <span>
+                    {step === 1 && "انتخاب نوع پروژه و زمان‌بندی"}
+                    {step === 2 && "محدوده سرمایه‌گذاری و بودجه"}
+                    {step === 3 && "اطلاعات تماس و تایید نهایی"}
+                  </span>
+                </div>
+                <div className="flex gap-2">
                   {[1, 2, 3].map((s) => (
                     <div
                       key={s}
-                      className={`h-1.5 w-8 rounded-full transition-colors ${
-                        s <= step ? "bg-white" : "bg-white/10"
+                      className={`h-2 rounded-full transition-all duration-300 ${
+                        s === step
+                          ? "w-8 bg-white"
+                          : s < step
+                          ? "w-4 bg-emerald-400"
+                          : "w-4 bg-white/10"
                       }`}
                     />
                   ))}
@@ -151,27 +177,49 @@ export function IntakeForm() {
 
               {/* Step 1: Project Type & Timeline */}
               {step === 1 && (
-                <div className="space-y-6 animate-in fade-in duration-150">
+                <div className="space-y-7 animate-in fade-in duration-200">
                   <div>
                     <label className="block text-sm font-semibold text-white mb-3">
                       ۱. نوع پروژه مورد نظر شما چیست؟
                     </label>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {projectTypes.map((type) => (
-                        <button
-                          type="button"
-                          key={type}
-                          onClick={() => setProjectType(type)}
-                          className={`flex items-center justify-between p-3.5 rounded-lg text-xs font-medium border text-right transition-all cursor-pointer ${
-                            projectType === type
-                              ? "bg-white text-black border-white"
-                              : "bg-neutral-900/60 text-neutral-300 border-white/10 hover:border-white/25"
-                          }`}
-                        >
-                          <span>{type}</span>
-                          {projectType === type && <Check className="h-4 w-4" />}
-                        </button>
-                      ))}
+                      {projectTypes.map((item) => {
+                        const isSelected = projectType === item.title;
+                        return (
+                          <button
+                            type="button"
+                            key={item.title}
+                            onClick={() => setProjectType(item.title)}
+                            className={`flex items-start justify-between p-4 rounded-xl text-right transition-all cursor-pointer border ${
+                              isSelected
+                                ? "bg-white text-black border-white shadow-[0_0_20px_rgba(255,255,255,0.15)]"
+                                : "bg-[#0E0E0E] text-neutral-300 border-white/[0.08] hover:border-white/20 hover:bg-[#121212]"
+                            }`}
+                          >
+                            <div className="space-y-1 pr-1">
+                              <div className="text-sm font-bold leading-tight">
+                                {item.title}
+                              </div>
+                              <div
+                                className={`text-[11px] leading-snug ${
+                                  isSelected ? "text-neutral-700" : "text-neutral-400"
+                                }`}
+                              >
+                                {item.desc}
+                              </div>
+                            </div>
+                            <div
+                              className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border mt-0.5 ${
+                                isSelected
+                                  ? "border-black bg-black text-white"
+                                  : "border-white/20"
+                              }`}
+                            >
+                              {isSelected && <Check className="h-3 w-3" />}
+                            </div>
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
 
@@ -180,21 +228,32 @@ export function IntakeForm() {
                       ۲. بازه زمانی تحویل مد نظر شما:
                     </label>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {timelines.map((time) => (
-                        <button
-                          type="button"
-                          key={time}
-                          onClick={() => setTimeline(time)}
-                          className={`flex items-center justify-between p-3.5 rounded-lg text-xs font-medium border text-right transition-all cursor-pointer ${
-                            timeline === time
-                              ? "bg-white text-black border-white"
-                              : "bg-neutral-900/60 text-neutral-300 border-white/10 hover:border-white/25"
-                          }`}
-                        >
-                          <span>{time}</span>
-                          {timeline === time && <Check className="h-4 w-4" />}
-                        </button>
-                      ))}
+                      {timelines.map((item) => {
+                        const isSelected = timeline === item.label;
+                        return (
+                          <button
+                            type="button"
+                            key={item.label}
+                            onClick={() => setTimeline(item.label)}
+                            className={`flex items-center justify-between p-3.5 rounded-xl text-right transition-all cursor-pointer border ${
+                              isSelected
+                                ? "bg-white text-black border-white shadow-[0_0_20px_rgba(255,255,255,0.15)]"
+                                : "bg-[#0E0E0E] text-neutral-300 border-white/[0.08] hover:border-white/20 hover:bg-[#121212]"
+                            }`}
+                          >
+                            <span className="text-xs font-semibold">{item.label}</span>
+                            <span
+                              className={`text-[10px] font-mono px-2 py-0.5 rounded ${
+                                isSelected
+                                  ? "bg-black/10 text-black font-semibold"
+                                  : "bg-white/5 text-neutral-400"
+                              }`}
+                            >
+                              {item.badge}
+                            </span>
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
 
@@ -204,6 +263,7 @@ export function IntakeForm() {
                       variant="primary"
                       size="md"
                       onClick={() => setStep(2)}
+                      className="shadow-[0_0_20px_rgba(255,255,255,0.2)]"
                     >
                       <span>مرحله بعد (بودجه پروژه)</span>
                       <ArrowLeft className="h-4 w-4" />
@@ -214,30 +274,52 @@ export function IntakeForm() {
 
               {/* Step 2: Budget */}
               {step === 2 && (
-                <div className="space-y-6 animate-in fade-in duration-150">
+                <div className="space-y-6 animate-in fade-in duration-200">
                   <div>
                     <label className="block text-sm font-semibold text-white mb-2">
-                      ۳. محدوده سرمایه‌گذاری / بودجه تخمینی:
+                      ۳. محدوده سرمایه‌گذاری / بودجه تخمینی پروژه:
                     </label>
-                    <p className="text-xs text-neutral-400 mb-4">
-                      تعیین بودجه به ما کمک می‌کند بهترین استک و دامنه توسعه را بدون اتلاف وقت پیشنهاد دهیم.
+                    <p className="text-xs text-neutral-400 mb-4 leading-relaxed">
+                      تعیین بودجه به تیم فنی ما کمک می‌کند تا مناسب‌ترین فیچرها، معماری و دامنه توسعه را بدون اتلاف وقت پیشنهاد دهند.
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {budgets.map((b) => (
-                        <button
-                          type="button"
-                          key={b}
-                          onClick={() => setBudget(b)}
-                          className={`flex items-center justify-between p-3.5 rounded-lg text-xs font-medium border text-right transition-all cursor-pointer ${
-                            budget === b
-                              ? "bg-white text-black border-white"
-                              : "bg-neutral-900/60 text-neutral-300 border-white/10 hover:border-white/25"
-                          }`}
-                        >
-                          <span>{b}</span>
-                          {budget === b && <Check className="h-4 w-4" />}
-                        </button>
-                      ))}
+                      {budgets.map((b) => {
+                        const isSelected = budget === b.range;
+                        return (
+                          <button
+                            type="button"
+                            key={b.range}
+                            onClick={() => setBudget(b.range)}
+                            className={`flex items-start justify-between p-4 rounded-xl text-right transition-all cursor-pointer border ${
+                              isSelected
+                                ? "bg-white text-black border-white shadow-[0_0_20px_rgba(255,255,255,0.15)]"
+                                : "bg-[#0E0E0E] text-neutral-300 border-white/[0.08] hover:border-white/20 hover:bg-[#121212]"
+                            }`}
+                          >
+                            <div className="space-y-1">
+                              <div className="text-xs font-bold leading-tight font-mono">
+                                {b.range}
+                              </div>
+                              <div
+                                className={`text-[11px] leading-snug ${
+                                  isSelected ? "text-neutral-700" : "text-neutral-400"
+                                }`}
+                              >
+                                {b.note}
+                              </div>
+                            </div>
+                            <div
+                              className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border mt-0.5 ${
+                                isSelected
+                                  ? "border-black bg-black text-white"
+                                  : "border-white/20"
+                              }`}
+                            >
+                              {isSelected && <Check className="h-3 w-3" />}
+                            </div>
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
 
@@ -256,6 +338,7 @@ export function IntakeForm() {
                       variant="primary"
                       size="md"
                       onClick={() => setStep(3)}
+                      className="shadow-[0_0_20px_rgba(255,255,255,0.2)]"
                     >
                       <span>مرحله بعد (اطلاعات تماس)</span>
                       <ArrowLeft className="h-4 w-4" />
@@ -266,23 +349,24 @@ export function IntakeForm() {
 
               {/* Step 3: Contact Info & Submission */}
               {step === 3 && (
-                <div className="space-y-5 animate-in fade-in duration-150">
+                <div className="space-y-6 animate-in fade-in duration-200">
                   <div>
                     <label className="block text-xs font-mono uppercase text-neutral-300 mb-2">
-                      نام و نام خانوادگی / نام شرکت *
+                      نام و نام خانوادگی / نام شرکت یا استارتاپ *
                     </label>
                     <Input
                       type="text"
-                      placeholder="مثال: علی رضایی (استارتاپ آلفا)"
+                      placeholder="مثال: مهندس رادمنش (فین‌پالس)"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       required
+                      className="bg-[#0E0E0E] border-white/10 focus:border-white"
                     />
                   </div>
 
                   <div>
                     <label className="block text-xs font-mono uppercase text-neutral-300 mb-2">
-                      شماره تماس همراه یا ثابت *
+                      شماره تماس همراه یا ثابت مستقیم *
                     </label>
                     <Input
                       type="tel"
@@ -291,17 +375,18 @@ export function IntakeForm() {
                       onChange={(e) => setPhone(e.target.value)}
                       dir="ltr"
                       required
+                      className="bg-[#0E0E0E] border-white/10 focus:border-white font-mono"
                     />
                   </div>
 
                   <div>
                     <label className="block text-xs font-mono uppercase text-neutral-300 mb-2">
-                      توضیحات تکمیلی یا لینک (اختیاری)
+                      توضیحات تکمیلی یا لینک به سایت/طرح فعلی (اختیاری)
                     </label>
                     <textarea
                       rows={3}
-                      className="flex w-full rounded-lg border border-white/10 bg-neutral-950 px-3.5 py-2.5 text-sm text-white placeholder:text-neutral-500 focus:border-white/40 focus:outline-none focus:ring-1 focus:ring-white/20"
-                      placeholder="خلاصه‌ای از قابلیت‌های مد نظر شما یا آدرس سایت فعلی..."
+                      className="flex w-full rounded-lg border border-white/10 bg-[#0E0E0E] px-3.5 py-2.5 text-sm text-white placeholder:text-neutral-500 focus:border-white focus:outline-none focus:ring-1 focus:ring-white/30 transition-all"
+                      placeholder="خلاصه‌ای از امکانات کلیدی مورد نیاز یا چالش‌های وب‌سایت فعلی شما..."
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                     />
@@ -319,7 +404,7 @@ export function IntakeForm() {
                   />
 
                   {error && (
-                    <div className="flex items-center gap-2 p-3 rounded-lg bg-red-950/40 border border-red-500/30 text-red-300 text-xs">
+                    <div className="flex items-center gap-2 p-3.5 rounded-xl bg-red-950/40 border border-red-500/30 text-red-300 text-xs animate-in fade-in">
                       <AlertCircle className="h-4 w-4 shrink-0" />
                       <span>{error}</span>
                     </div>
@@ -341,14 +426,15 @@ export function IntakeForm() {
                       variant="primary"
                       size="md"
                       disabled={loading}
+                      className="shadow-[0_0_25px_rgba(255,255,255,0.25)]"
                     >
                       {loading ? (
                         <>
                           <Loader2 className="h-4 w-4 animate-spin" />
-                          <span>در حال ارسال...</span>
+                          <span>در حال ارسال امن...</span>
                         </>
                       ) : (
-                        <span>ثبت و دریافت مشاوره اختصاصی</span>
+                        <span>ثبت درخواست و دریافت مشاوره اختصاصی</span>
                       )}
                     </Button>
                   </div>
