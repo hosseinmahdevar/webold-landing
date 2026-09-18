@@ -2,10 +2,12 @@ import { SiteConfig } from "@/types";
 
 export const siteConfig: SiteConfig = {
   name: "استودیو وبولد",
+  brandName: "Webold",
+  legalName: "گروه نرم‌افزاری نوین پردازش اوراسیا",
   domain: "webold.ir",
   url: "https://webold.ir",
   tagline: "مهندسی و طراحی وب‌سایت‌های مدرن و مقیاس‌پذیر",
-  description: "استودیو وبولد؛ طراحی اختصاصی و توسعه وب‌سایت‌ها و پلتفرم‌های پرسرعت بر پایه Next.js، React و TypeScript برای کسب‌وکارهای پیشرو.",
+  description: "استودیو وبولد (گروه نرم‌افزاری نوین پردازش اوراسیا)؛ طراحی اختصاصی و توسعه وب‌سایت‌ها و پلتفرم‌های پرسرعت بر پایه Next.js، React و TypeScript برای کسب‌وکارهای پیشرو.",
   availabilityStatus: "ظرفیت فعال برای ۲ پروژه در اسپرینت جاری",
   contact: {
     address: "تهران، خیابان قائم مقام، کوچه آزادگان، پلاک ۲۲، واحد ۳",

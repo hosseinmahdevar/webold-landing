@@ -41,6 +41,8 @@ export interface Testimonial {
 
 export interface SiteConfig {
   name: string;
+  brandName: string;
+  legalName: string;
   domain: string;
   url: string;
   tagline: string;

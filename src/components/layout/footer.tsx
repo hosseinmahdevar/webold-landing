@@ -128,7 +128,7 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 font-mono">
-          <p>© ۲۰۲۶ {siteConfig.name} ({siteConfig.domain}). تمامی حقوق محفوظ است.</p>
+          <p>© ۲۰۲۶ {siteConfig.name} ({siteConfig.legalName}). تمامی حقوق محفوظ است.</p>
           <div className="flex items-center gap-3 text-[11px] text-lime-800 dark:text-lime-300/80 font-medium">
             <span>Next.js 15 App Router</span>
             <span>•</span>

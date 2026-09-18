@@ -5,6 +5,8 @@ export function getOrganizationJsonLd() {
     "@context": "https://schema.org",
     "@type": ["Organization", "ProfessionalService"],
     "name": siteConfig.name,
+    "legalName": siteConfig.legalName,
+    "alternateName": [siteConfig.brandName, "Webold", "وبولد", "استودیو وبولد", "گروه نرم‌افزاری نوین پردازش اوراسیا"],
     "url": siteConfig.url,
     "logo": `${siteConfig.url}/og-image.png`,
     "description": siteConfig.description,
